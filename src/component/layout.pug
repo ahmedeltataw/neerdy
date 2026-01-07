@@ -1,0 +1,48 @@
+
+//- // Head الأساسي
+doctype html
+html(lang="ar")
+   head
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+
+      //- // SEO أساسي
+      title
+         block title
+            title  Neerdy
+      meta(name="description", content="")
+      meta(name="keywords", content="")
+      meta(name="author", content="safe nest")
+
+      //- // Open Graph (لـ Facebook و LinkedIn وغيرهم)
+      //- meta(property="og:title", content="عنوان الصفحة على السوشيال")
+      //- meta(property="og:description", content="وصف يظهر عند مشاركة الصفحة")
+      //- meta(property="og:type", content="website")
+      //- meta(property="og:url", content="https://example.com")
+      //- meta(property="og:image", content="https://example.com/og-image.jpg")
+
+      //- // Twitter Card
+      //- meta(name="twitter:card", content="summary_large_image")
+      //- meta(name="twitter:title", content="عنوان لتويتر")
+      //- meta(name="twitter:description", content="وصف لتويتر")
+      //- meta(name="twitter:image", content="https://example.com/twitter-image.jpg")
+
+      //- // Favicons & Theme
+      link(rel="icon", href="./assets/images/favicon.ico", type="image/x-icon")
+      meta(name="theme-color", content="#ffffff")
+      //- css style
+      link(rel="stylesheet", href="./css/swiper.css")
+      link(rel="stylesheet", href="./css/style.css")
+   body
+      include  ./Header.pug
+      include  ./Loader.pug
+      main 
+         block content
+      .overLay#overLay
+      //- include  ./footer.pug
+      script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js") 
+      script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js") 
+      script(src="./js/SplitText.min.js") 
+      script(src="./js/swiper.js") 
+      script(src="./js/main.js") 

@@ -1,0 +1,34 @@
+include ./ui/_Button.pug
+include ./ui/_Image.pug
+section.about.pos-rel.aboutShape 
+    .container
+        div(class="d-grid grid-col-1 lg:grid-col-2 items-center gap-14 py-8")
+            .content.me-8 
+                h2.tag.mainHeading.fadeIn.split-lines وش هي Neerdy ؟
+                p.mb-12.split-text.fs-20.fw-600.line-relaxed.text-gray 
+                    | Neerdy لعبة ثقافية عائلية تجمعكم وترجعكم للحياة الاجتماعية وتعطي جو تحدي، وتزيدكم معرفة ومعلومات. اجتمع مع قروبك وادخلوا قيم سريع فيه 6 فئات تضم 36 سؤال. ومعها 3 وسائل مساعدة لكل فريق. جمّع فريقك الحين وابدأ التحدي.
+                +button({ 
+                            text: 'ابدء اللعب', 
+                            link: '/', 
+                        }).primary.large.fadeIn
+            figure.h-full.round-lg.pos-rel.fadeIn
+                iframe(
+                    width="100%"
+                    height="500"
+                    class="round-lg .imgUpDown"
+                    src="https://www.youtube-nocookie.com/embed/fY_t3wFX6q8"
+                    title="YouTube video player"
+                    frameborder="0"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                )
+                +Image({ 
+                    name: 'boy-img', 
+                    width: 100,
+                    height: 100,
+                    alt: ' logo', 
+                    lazy: false,
+                    responsive: true,
+                    sizes: '(max-width: 600px) 480px, 800px'
+                    }).boyImg

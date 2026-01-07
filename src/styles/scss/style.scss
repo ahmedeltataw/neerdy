@@ -1,0 +1,154 @@
+@use "../plugins/AE.css";
+// helpers
+@use "./helpers/colors" as *;
+@use "./helpers/fonts" as *;
+@use "./helpers/mixins" as *;
+@use "./helpers/animation" as *;
+// Component
+@use "./Component/hero";
+@use "./Component/faq";
+
+// ui
+@use "./Component/ui/button";
+@use "./Component/header";
+// customClass
+@use "./helpers/Class";
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "GraphikArabic";
+  background-color: var(--BodyBg);
+}
+section:not(.hero) {
+  padding-block: 120px;
+  // min-height: 80dvh;
+}
+menu {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+figure {
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+a {
+  color: var(--Dark);
+  text-transform: capitalize;
+  font-size: 16px;
+  transition: var(--ts);
+}
+
+.overLay {
+  cursor:
+    url("https://demo-morata.myshopify.com/cdn/shop/t/3/assets/cursor-close.png?v=93210088594709752341700037392"),
+    pointer;
+
+  &.active {
+    @include overlay(100%, 100%, rgba($color: #000000, $alpha: 0.3), inset, 0);
+
+    &::before {
+      position: fixed;
+      backdrop-filter: blur(2px);
+      height: 100%;
+      z-index: 999;
+    }
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  vertical-align: middle;
+  // margin-right: 8px;
+}
+// library init
+.swiper {
+  width: 100%;
+  height: 100%;
+  .swiper-slide {
+    // text-align: center;
+    font-size: 18px;
+    // background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* preload */
+.preload{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  overflow: hidden;
+  .bars{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    .bar{
+      width: 10vw;
+      height: 100%;
+      background-color: var(--secondColor);
+    }
+
+  }
+  .counter{
+    position: fixed;
+    bottom: 50px;
+    inset-inline-end: 50px;
+    color: #fff;
+    font-size: 120px;
+    font-weight: bold;
+  }
+  figure{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: load 3s ease-in-out infinite ;
+
+  }
+
+}
+// no scroll
+.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* يمنع أي تمرير */
+}
+/*  */
+// @include shaking('shake');
+@keyframes load {
+  0%{
+    transform: translate(-50%, -50%) scale(.4) rotate(0deg);
+    opacity: 0;
+  }
+  40%{
+    transform: translate(-50%, -50%) scale(.8) rotate(-15deg);
+    opacity: 1;
+  }
+  80%{
+    transform: translate(-50%, -50%) scale(1) rotate(15deg);
+    opacity: 1;
+  }
+  100%{
+    transform: translate(-50%, -50%) scale(.4) rotate(0deg);
+    opacity: 0;
+  }
+}

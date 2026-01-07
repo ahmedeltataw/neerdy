@@ -1,0 +1,25 @@
+mixin button({ text, style='', type='button', icon=false, link=false, iconDir='left' ,aria=''})
+  //- اختيار العنصر: لو فيه رابط يبقى <a> ولو مفيش يبقى <button>
+  - const Tag = link ? 'a' : 'button'
+  
+  #{Tag}(
+    class=style 
+    type=(!link ? type : null) 
+    href=(link ? link : null)
+    role=(link ? 'button' : null)
+    aria-label=(text == '' ? aria : text)
+  )&attributes(attributes)
+    
+    //- الأيقونة جهة اليسار + النص
+    if icon && iconDir === 'left'
+      svg.icon: use(xlink:href=`./assets/icons/sprite.svg#icon-${icon}`)
+      |  #{text}
+    
+    //- النص + الأيقونة جهة اليمين
+    else if icon && iconDir === 'right'
+      | #{text} 
+      svg.icon: use(xlink:href=`./assets/icons/sprite.svg#icon-${icon}`)
+    
+    //- نص فقط (في حال مفيش أيقونة)
+    else
+      | #{text}

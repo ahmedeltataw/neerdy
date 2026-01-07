@@ -1,0 +1,85 @@
+@use "sass:math";
+@use "./extends" as *;
+@mixin overlay($height, $width, $color, $dir, $dir-value) {
+    &::before {
+        content: '';
+        position: absolute;
+        #{$dir}: $dir-value;
+        width: $width;
+        height: $height;
+        background: $color;
+
+    }
+}
+
+@mixin input($h , $w, $bc) {
+    height: $h;
+    width: $w;
+    outline: 0;
+    border: 1px solid $bc;
+    transition: .3s ease-in-out;
+}
+
+@mixin centerPosition() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin circle($size ) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}
+
+@mixin pseudoEl($w, $h, $color, $dir, $dirValue) {
+    background-color: $color;
+    width: $w;
+    height: $h;
+    #{$dir}: $dirValue
+}
+
+@mixin gridCol($min, $max) {
+    grid-template-columns: repeat(auto-fill, minmax($min, $max));
+}
+
+@mixin textMedia($w, $line) {
+    @media(max-width:$w) {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $line;
+        overflow: hidden;
+    }
+}
+$min-screen-width: 320px;
+$max-screen-width: 1600px;
+
+@mixin res($property, $min-px, $max-px) {
+  $slope: math.div($max-px - $min-px, $max-screen-width - $min-screen-width);
+  $intercept-px: $min-px - $slope * $min-screen-width;
+
+  // تحويل الجزء الثابت إلى rem لضمان المرونة
+  $intercept-rem: math.div($intercept-px, 16px);
+
+  #{$property}: clamp(
+    #{math.div($min-px, 16px)}rem,
+    calc(#{$slope * 100}vw + #{$intercept-rem}rem),
+    #{math.div($max-px, 16px)}rem
+  );
+}
+
+
+@mixin shapeImg($name ,$reverse:false ,$dir , $dir-value:0px) {
+    &::before{
+        @extend %A_B;
+        background: url('../assets/images/#{$name}.svg') no-repeat center center / cover;
+        height: 120px;
+        width: 100%;
+        #{$dir}: $dir-value;
+        @if $reverse == true {
+            transform: scaleY(-1);
+        }
+        z-index: 1;
+    }
+}

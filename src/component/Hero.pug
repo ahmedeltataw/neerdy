@@ -1,0 +1,11 @@
+include ./ui/_Button.pug
+include ./ui/_Image.pug
+section.hero.pos-rel 
+    .container.h-full.d-flex.flex-col.items-center.justify-center.gap-8 
+        .content.text-center
+            h1.tag لعبة تحدي الأسئلة الأولى بالوطن العربي
+            p.my-11.fs-24.fw-600.text-white اللي مالعبها ما عاش التحد re
+            +button({ 
+                        text: 'العب', 
+                        link: '/', 
+                    }).primary.large

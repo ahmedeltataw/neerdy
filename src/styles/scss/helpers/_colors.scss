@@ -1,0 +1,32 @@
+$mainColor: rgba($color: #f89c13, $alpha: 1.0); ;
+$mainColor20: rgba($color: #f89c13, $alpha: 20%); 
+$mainColor08: rgba($color: #f89c13, $alpha: 8%); 
+$secondColor: rgba($color: #2a7fc2, $alpha: 1.0); ;
+$secondColor20: rgba($color: #2a7fc2, $alpha: 20%); 
+$secondColor08: rgba($color: #2a7fc2, $alpha: 8%); 
+$gray:rgba($color: #0b0b0b, $alpha: 60%); 
+$inputBG:rgba($color: #0b0b0b, $alpha: 3%); 
+$grayLight:rgba($color: #0b0b0b, $alpha: 45%); 
+$inputHint:rgba($color: #0b0b0b, $alpha: 35%); 
+$inputStroke:rgba($color: #0b0b0b, $alpha: 5%); 
+:root {
+    --mainColor: #{$mainColor};
+    --mainColor20: #{$mainColor20};
+    --mainColor08: #{$mainColor08}; 
+    --secondColor: #{$secondColor};
+    --secondColor20: #{$secondColor20};
+    --secondColor08: #{$secondColor08};
+    --white:#ffffff;
+    --dark:#0b0b0b;
+    --BodyBg:#F8F9FA;
+    --orange:#ff7526;
+    --gray:#{$gray}; 
+    --grayLight:#{$grayLight};
+    --inputHint:#{$inputHint};
+    --inputStroke:#{$inputStroke};
+    --inputBG:#{$inputBG};
+    --bottom-gra:linear-gradient(180deg,rgba(4, 21, 45, 0) 0%,#fcfbfb 95.17%);
+    --bottom-gra2:linear-gradient(180deg,rgba(4, 21, 45, 0) 0%,#201F1D 95.17%);
+    --t-l: 500ms ease-in-out;
+    --t-s: 250ms ease-in-out;
+}

@@ -1,0 +1,22 @@
+mixin Image({ name, alt = "", responsive = false, sizes = "100vw", lazy = true, width, height })
+  - 
+    // بننادي الوظيفة بالاسم بس وهي هتدور على الامتداد
+    const dims = getImageSize(name);
+    
+    const finalWidth = width || dims.width;
+    const finalHeight = height || dims.height;
+    
+    const srcPath = `/assets/images/${name}.webp`;
+    const retinaPath = `/assets/images/${name}@2x.webp`;
+    const srcset = responsive ? `${srcPath} 1x, ${retinaPath} 2x` : null;
+
+  img(
+    src=srcPath
+    srcset=srcset
+    alt=alt
+    width=(finalWidth > 0 ? finalWidth : null)
+    height=(finalHeight > 0 ? finalHeight : null)
+    loading=lazy ? "lazy" : "eager"
+    decoding="async"
+    sizes=(responsive ? sizes : null)
+  )&attributes(attributes)

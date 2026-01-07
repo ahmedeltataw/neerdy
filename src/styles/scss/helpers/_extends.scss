@@ -1,0 +1,15 @@
+%A_B {
+    content: '';
+    position: absolute;
+    transition: var(--ts);
+}
+
+%centerY {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+%centerX {
+    left: 50%;
+    transform: translateX(-50%);
+}

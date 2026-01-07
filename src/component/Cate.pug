@@ -1,0 +1,71 @@
+include ./ui/_Image.pug
+section.cate.pos-rel.cateShape 
+    .container.fadeIn  
+        .d-flex.items-center.justify-center.flex-col.gap-2.fadeIn 
+            h2.tag.mainHeading.split-lines.fadeIn.text-center.reverse الفئات
+            p.mb-10.text-gray.fw-700.fs-20 جمعنالكم فئات متنوعة تقدرون تختارون اللي تبونه بس خلكم حذرين لأنها أساس اللعبة.
+        .swiper.cateSwiper
+            .swiper-wrapper
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg 
+                        figure.pos-rel
+                            +Image({ 
+                                name: '1', 
+                                alt: 'صورة المنتج', 
+                                responsive: true,
+                                sizes: '(max-width: 600px) 480px, 800px'
+                            }).round-s
+                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg 
+                        figure.pos-rel
+                            +Image({ 
+                                name: '2', 
+                                alt: 'صورة المنتج', 
+                                responsive: true,
+                                sizes: '(max-width: 600px) 480px, 800px'
+                            }).round-s
+                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg 
+                        figure.pos-rel
+                            +Image({ 
+                                name: '3', 
+                                alt: 'صورة المنتج', 
+                                responsive: true,
+                                sizes: '(max-width: 600px) 480px, 800px'
+                            }).round-s
+                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg 
+                        figure.pos-rel
+                            +Image({ 
+                                name: '4', 
+                                alt: 'صورة المنتج', 
+                                responsive: true,
+                                sizes: '(max-width: 600px) 480px, 800px'
+                            }).round-s
+                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg 
+                        figure.pos-rel
+                            +Image({ 
+                                name: '5', 
+                                alt: 'صورة المنتج', 
+                                responsive: true,
+                                sizes: '(max-width: 600px) 480px, 800px'
+                            }).round-s
+                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg
+                        figure.pos-rel
+                            +Image({ 
+                                name: '6', 
+                                alt: 'صورة المنتج', 
+                                responsive: true,
+                                sizes: '(max-width: 600px) 480px, 800px'
+                            }).round-s
+                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+
+            .swiper-button-next
+            .swiper-button-prev

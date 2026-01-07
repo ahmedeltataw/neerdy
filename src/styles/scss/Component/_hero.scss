@@ -1,0 +1,16 @@
+@use "../helpers/extends" as *;
+.hero{
+    height: 700px;
+    padding-block: 120px 0px;
+    background-color: var(--orange);
+    
+    &::before{
+        @extend %A_B;
+        background: url('../assets/images/BGDown-BG.svg') no-repeat center center / cover;
+        height: 120px;
+        width: 100%;
+        bottom: 0;
+        // transform: scaleY(-1);
+    }
+
+}
