@@ -3,7 +3,7 @@ include ./ui/_Image.pug
 section.How.pos-rel.bg-second
     .container
         div(class="d-grid grid-col-1 lg:grid-col-2 items-center gap-14 py-8")
-            figure.imgUpDown
+            figure
                 +Image({ 
                         name: 'test', 
                         
@@ -12,10 +12,10 @@ section.How.pos-rel.bg-second
 
                     }).round-full
             .content.ms-8 
-                h2.tag.mainHeading.reverse.fadeIn.split-lines كيف العب؟
-                p.mb-12.split-text.fs-20.fw-600.line-relaxed.text-Body 
+                h2.tag.mainHeading.reverse كيف العب؟
+                p.mb-12.fs-20.fw-600.line-relaxed.text-Body 
                     | جهز فريقك واختار مين بيلعب ضدك، واجتمعوا في مكان واحد. انت وفريقك اختاروا 3 فئات تناسبكم والفريق اللي ضدكم يختار 3 فئات بعد. اربط اللعبة على التلفزيون وابدأ اللعب.
                 +button({ 
                             text: 'ابدء اللعب', 
                             link: '/', 
-                        }).primary.large.fadeIn
+                        }).primary.large

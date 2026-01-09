@@ -24,411 +24,137 @@ import size from "gulp-size";
 import svgSprite from "gulp-svg-sprite";
 import svgmin from "gulp-svgmin";
 import cheerio from "gulp-cheerio";
-import stylelint from "gulp-stylelint";
 import sizeOf from "image-size";
 import ghPages from 'gh-pages';
+
 const sync = browserSync.create();
-const isProd = process.env.NODE_ENV === "production";
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
+const isProd = process.env.NODE_ENV === "production"; // بيحدد لو إحنا في مرحلة الرفع النهائي
+const __filename = path.resolve(import.meta.url.replace('file://', ''));
 const __dirname = path.dirname(__filename);
-// Task الرفع لـ GitHub Pages
-export const deploy = (cb) => {
-  ghPages.publish(path.join(__dirname, 'dist'), {
-    branch: 'gh-pages', // إحنا بنجبره يرفع لبرانش الـ main
-    dotfiles: true,
-    message: 'Update production build'
-  }, (err) => {
-    if (err) {
-      console.error('❌ الرفع فشل يا صاحبي:', err);
-    } else {
-      console.log('✅ الموقع اترفع بنجاح على main!');
-    }
-    cb();
-  });
-};
-// إعدادات Sharp للسرعة القصوى
-const sharpConfig = {
-  webp: {
-    quality: 75,
-    alphaQuality: 90,
-    lossless: false,
-    nearLossless: true,
-    smartSubsample: true,
-    effort: 2,
-    chromaSubsampling: "4:2:0",
-  },
-};
 
+// --- المسارات ---
 const paths = {
-  pug: {
-    src: ["src/**/*.pug", "!src/component/**/*.pug", "!src/mixins/**/*.pug"],
-    // watch: ["src/**/*.pug"], // أضف هذا السطر
-    dest: "dist/",
-  },
-  styles: {
-    src: [
-      "src/styles/scss/**/*.scss",
-      "src/styles/plugins/**/*.css",
-      "!src/styles/plugins/AE.css",
-    ],
-    dest: "dist/css/",
-  },
-  scripts: {
-    src: "src/js/**/*.js",
-    dest: "dist/js/",
-  },
-  images: {
-    src: "src/assets/images/**/*.{jpg,jpeg,png,svg,gif}",
-    dest: "dist/assets/images",
-  },
-  fonts: {
-    src: "src/assets/fonts/**/*.{ttf,woff,woff2,eot}",
-    dest: "dist/assets/fonts",
-  },
-  icons: {
-    src: "src/assets/icons/**/*.svg",
-    dest: "dist/assets/icons",
-  },
-  static: {
-    src: "src/assets/images/**/*.ico",
-    dest: "dist/assets/images",
-  },
+  pug: { src: ["src/**/*.pug", "!src/component/**/*.pug", "!src/mixins/**/*.pug"], dest: "dist/" },
+  styles: { src: ["src/styles/scss/**/*.scss", "src/styles/plugins/**/*.css", "!src/styles/plugins/AE.css"], dest: "dist/css/" },
+  scripts: { src: "src/js/**/*.js", dest: "dist/js/" },
+  images: { src: "src/assets/images/**/*.{jpg,jpeg,png,svg,gif}", dest: "dist/assets/images" },
+  fonts: { src: "src/assets/fonts/**/*.{ttf,woff,woff2,eot}", dest: "dist/assets/fonts" },
+  icons: { src: "src/assets/icons/**/*.svg", dest: "dist/assets/icons" },
+  static: { src: "src/assets/images/**/*.ico", dest: "dist/assets/images" },
 };
 
-// تأكد من وجود مجلد dist
-function ensureDistExists(cb) {
-  if (!fs.existsSync("dist")) {
-    fs.mkdirSync("dist", { recursive: true });
-  }
-  cb();
-}
+// --- المهام (Tasks) ---
 
-// تنظيف مجلد dist
+// 1. تنظيف الملفات
 export const clean = () => deleteAsync(["dist"]);
 
-// تحويل Pug إلى HTML
+// 2. معالجة Pug (HTML)
 export const compilePug = () => {
-  return gulp
-    .src(paths.pug.src)
+  return gulp.src(paths.pug.src)
+    .pipe(plumber())
     .pipe(pug({
+      pretty: !isProd, // في الـ Dev بيكون الكود مقروء، في الـ Prod بيضغط
       locals: {
+        // ميكسين ذكي لقراءة أبعاد الصور تلقائياً
         getImageSize: (imgName) => {
-          const extensions = ['.png', '.jpg', '.jpeg', '.webp', '.svg'];
-          const baseDir = path.resolve('src/assets/images'); 
-        
-          const tryReadSize = (fullPath) => {
-            try {
-              if (fs.existsSync(fullPath)) {
-                // الحل هنا: بنقرأ الملف كـ Buffer الأول
-                const fileBuffer = fs.readFileSync(fullPath);
-                // بنبعت الـ Buffer للمكتبة بدل المسار
-                return sizeOf(fileBuffer);
-              }
-            } catch (e) {
-              console.error(`❌ Error at: ${fullPath} -> ${e.message}`);
-            }
-            return null;
-          };
-        
-          // 1. لو الاسم فيه امتداد
-          if (imgName.includes('.')) {
-            const result = tryReadSize(path.join(baseDir, imgName));
-            if (result) return result;
+          const baseDir = path.resolve('src/assets/images');
+          const ext = ['.png', '.jpg', '.jpeg', '.webp', '.svg'];
+          for (let e of ext) {
+            const fullPath = path.join(baseDir, imgName.includes('.') ? imgName : imgName + e);
+            if (fs.existsSync(fullPath)) return sizeOf(fs.readFileSync(fullPath));
           }
-        
-          // 2. البحث في الامتدادات
-          for (let ext of extensions) {
-            const result = tryReadSize(path.join(baseDir, `${imgName}${ext}`));
-            if (result) return result;
-          }
-        
           return { width: 0, height: 0 };
         }
       }
     }))
-    .pipe(
-      plumber({
-        errorHandler: function (err) {
-          console.error("Pug Error:", err.message);
-          this.emit("end");
-        },
-      })
-    )
-    .pipe(
-      pug({
-        // pretty: !isProd,
-        verbose: true,
-        locals: {},
-        cache: false, // تعطيل الذاكرة المؤقتة للتطوير
-      })
-    )
     .pipe(gulp.dest(paths.pug.dest))
-    .pipe(sync.stream({ match: "**/*.html" })); // تحديث المتصفح للـ HTML فقط
+    .pipe(sync.stream());
 };
 
-// معالجة الأنماط
+// 3. معالجة CSS (SCSS + PostCSS)
 const sassCompiler = gulpSass(sass);
 export const styles = () => {
-  return (
-    gulp
-      .src(paths.styles.src)
-      .pipe(
-        plumber({
-          errorHandler: function (err) {
-            console.error(err.message);
-            this.emit("end");
-          },
-        })
-      )
-      // .pipe(changed(paths.styles.dest))
-      .pipe(gulpIf(!isProd, sourcemaps.init()))
-      .pipe(
-        gulpIf(
-          (file) => file.extname === ".scss",
-          sassCompiler({ outputStyle: "expanded" }).on(
-            "error",
-            sassCompiler.logError
-          )
-        )
-      )
-      .pipe(
-        postcss([
-          postcssPresetEnv({
-            autoprefixer: { grid: true },
-            overrideBrowserslist: ["> 0.5%", "last 2 versions", "not dead"],
-            stage: 3,
-            features: { "gap-properties": true },
-          }),
-          postcssFlexbugsFixes(),
-          postcssPxToRem({
-            rootValue: 16,
-            propList: ["*"],
-          }),
-          ...(isProd
-            ? [
-                postcssCsso({ restructure: false, comments: false }),
-                purgecss({
-                  content: ["src/**/*.pug", "src/**/*.js"],
-                  css: ["dist/**/*.css"], // مسار ملفات CSS المُخرجة
-                  safelist: {
-                    standard: [
-                      "active",
-                      "show",
-                      "fade",
-                      "collapse",
-                      /^btn-/,
-                      /^modal-/,
-                      /^carousel-/,
-                    ],
-                    deep: [/^bs-/, /^swiper-/],
-                  },
-                  extractors: [
-                    {
-                      extractor: (content) => {
-                        const matches = content.match(/[\w-/:]+(?<!:)/g);
-                        return matches || [];
-                      },
-                      extensions: ["pug", "js"],
-                    },
-                  ],
-                }),
-              ]
-            : []),
-        ])
-      )
-      .pipe(gulpIf(!isProd, sourcemaps.write(".")))
-      .pipe(size({ title: "CSS Size:" }))
-      .pipe(gulp.dest(paths.styles.dest))
-      .pipe(sync.stream())
-  );
+  const plugins = [
+    postcssPresetEnv({ stage: 3, autoprefixer: { grid: true } }),
+    postcssFlexbugsFixes(),
+    postcssPxToRem({ rootValue: 16, propList: ["*"] }),
+  ];
+
+  if (isProd) {
+    plugins.push(postcssCsso({ restructure: false, comments: false }));
+    plugins.push(purgecss({
+      content: ["src/**/*.pug", "src/**/*.js"],
+      safelist: { standard: [/btn-/, /swiper-/], deep: [/modal-/] }
+    }));
+  }
+
+  return gulp.src(paths.styles.src)
+    .pipe(gulpIf(!isProd, sourcemaps.init()))
+    .pipe(sassCompiler().on("error", sassCompiler.logError))
+    .pipe(postcss(plugins))
+    .pipe(gulpIf(!isProd, sourcemaps.write(".")))
+    .pipe(size({ title: "CSS Size:" }))
+    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(sync.stream());
 };
 
-// معالجة JavaScript
+// 4. معالجة JavaScript
 export const scripts = () => {
-  return gulp
-    .src(paths.scripts.src, { allowEmpty: true })
+  return gulp.src(paths.scripts.src)
     .pipe(plumber())
-    .pipe(gulpIf(isProd, terser()))
+    .pipe(gulpIf(isProd, terser({ compress: { drop_console: true } }))) // بيمسح الـ console.log في الـ Prod
     .pipe(size({ title: "JS Size:" }))
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(sync.stream());
 };
 
-// تحويل الصور إلى WebP وتحسينها باستخدام Sharp
+// 5. تحسين الصور (WebP)
 export const optimizeImages = () => {
-  return gulp
-    .src(paths.images.src)
-    // مهم جداً: الـ changed بيخلي جلب ميعملش معالجة غير للصور الجديدة بس
+  return gulp.src(paths.images.src)
     .pipe(changed(paths.images.dest, { extension: ".webp" }))
-    .pipe(
-      through2.obj(async function (file, _, cb) {
-        if (![".jpg", ".jpeg", ".png"].includes(file.extname.toLowerCase())) {
-          return cb(null, file);
-        }
-
-        try {
-          // بنحول لـ webp مرة واحدة وبجودة متوازنة (75-80)
-          const buffer = await sharp(file.contents)
-            .webp({ quality: 75, effort: 2 }) // effort 2 بيخلي التحويل أسرع
-            .toBuffer();
-
-          file.contents = buffer;
-          file.extname = ".webp";
-          
-          cb(null, file);
-        } catch (err) {
-          console.error(`Error processing ${file.basename}:`, err);
-          cb(err);
-        }
-      })
-    )
-    .pipe(gulp.dest(paths.images.dest))
-    .pipe(sync.stream());
+    .pipe(through2.obj(async (file, _, cb) => {
+      if (!file.isBuffer() || file.extname === '.svg') return cb(null, file);
+      try {
+        file.contents = await sharp(file.contents)
+          .webp({ quality: 75, effort: isProd ? 6 : 2 }) // جهد أكبر في الـ Prod لتقليل الحجم
+          .toBuffer();
+        file.extname = ".webp";
+        cb(null, file);
+      } catch (err) { cb(err); }
+    }))
+    .pipe(gulp.dest(paths.images.dest));
 };
 
-// تحسين SVG مع استبعاد المحسنة مسبقاً
-// تحسين SVG مع ضمان عدم التكرار
-export const optimizeSVG = () => {
-  return (
-    gulp
-      .src(paths.images.src.replace('{jpg,jpeg,png,svg,gif}', 'svg')) // استهداف الـ SVG فقط من مسار الصور
-      .pipe(changed(paths.images.dest)) // مقارنة الملف الأصلي بالموجود في dist
-      .pipe(
-        svgmin({
-          multipass: true,
-          plugins: [
-            {
-              name: "preset-default",
-              params: {
-                overrides: {
-                  removeViewBox: false, // مهم عشان الـ Icons متصغرش أو تبوظ
-                  cleanupIDs: false,
-                },
-              },
-            },
-          ],
-        })
-      )
-      // حذفنا الـ rename عشان ينزل بنفس اسمه الأصلي logo.svg -> logo.svg
-      .pipe(gulp.dest(paths.images.dest))
-      .pipe(sync.stream())
-  );
+// 6. الرفع لـ GitHub Pages
+export const deploy = (cb) => {
+  ghPages.publish(path.join(__dirname, 'dist'), { branch: 'gh-pages' }, (err) => {
+    if (err) console.error('❌ الرفع فشل:', err);
+    else console.log('✅ الموقع Live الآن!');
+    cb();
+  });
 };
 
-// معالجة الخطوط
-export const optimizeFonts = () => {
-  return gulp
-    .src(paths.fonts.src, { encoding: false, allowEmpty: true })
-    .pipe(changed(paths.fonts.dest))
-    .pipe(gulpIf((file) => file.extname === ".ttf", ttf2woff2()))
-    .pipe(gulp.dest(paths.fonts.dest))
-    .pipe(sync.stream());
-};
-
-// إنشاء SVG Sprite
+// --- باقي المهام (SVG, Fonts, Static) ---
 export const createSvgSprite = () => {
-  return gulp
-    .src(paths.icons.src)
-    .pipe(plumber())
-    .pipe(svgmin({
-      plugins: [{ name: 'preset-default', params: { overrides: { removeViewBox: false } } }]
-    }))
-    .pipe(cheerio({
-      run: ($) => {
-        $('[fill]').removeAttr('fill');
-        $('[stroke]').removeAttr('stroke');
-        $('[style]').removeAttr('style');
-      },
-      parserOptions: { xmlMode: true }
-    }))
-    .pipe(svgSprite({
-      mode: {
-        symbol: {
-          dest: ".",
-          sprite: "sprite.svg"
-        }
-      },
-      shape: {
-        id: { generator: "icon-%s" }
-      }
-    }))
-    .pipe(gulp.dest(paths.icons.dest))
-    .pipe(sync.stream()); // تأكد أن هذه في النهاية تماماً
+  return gulp.src(paths.icons.src)
+    .pipe(svgmin())
+    .pipe(cheerio({ run: ($) => $('[fill]').removeAttr('fill'), parserOptions: { xmlMode: true } }))
+    .pipe(svgSprite({ mode: { symbol: { dest: ".", sprite: "sprite.svg" } }, shape: { id: { generator: "icon-%s" } } }))
+    .pipe(gulp.dest(paths.icons.dest));
 };
 
-// نسخ الملفات الثابتة
-export const copyStatic = () => {
-  return gulp
-    .src(paths.static.src, { allowEmpty: true })
-    .pipe(gulp.dest(paths.static.dest))
-    .pipe(sync.stream());
-};
+export const optimizeFonts = () => gulp.src(paths.fonts.src, { encoding: false }).pipe(ttf2woff2()).pipe(gulp.dest(paths.fonts.dest));
 
-// فحص جودة CSS
-export const lintCSS = () => {
-  return gulp.src(paths.styles.src);
-  // .pipe(stylelint({
-  //   reporters: [{ formatter: 'string', console: true }]
-  // }));
-};
-
-// تشغيل سيرفر تطوير
+// --- التشغيل وسيرفر التطوير ---
 export const serve = (done) => {
-  sync.init(
-    {
-      server: {
-        baseDir: "dist",
-        serveStaticOptions: {
-          cacheControl: false,
-        },
-      },
-      notify: true,
-      open: true,
-      ghostMode: false,
-      injectChanges: true, // هذه الإضافة ضرورية
-      port: 3000,
-      logFileChanges: true, // تسجيل تغييرات الملفات
-    },
-    done
-  );
-
-  const watchOptions = {
-    ignoreInitial: false,
-    awaitWriteFinish: {
-      stabilityThreshold: 1000, // زيادة وقت الاستقرار
-      pollInterval: 100,
-    },
-    usePolling: true, // مهم لأنظمة الملفات البطيئة
-  };
-
-  gulp.watch("src/**/*.pug", watchOptions, compilePug);
-  gulp.watch(paths.styles.src, watchOptions, gulp.series(lintCSS, styles));
-  gulp.watch(paths.scripts.src, watchOptions, scripts);
-  gulp.watch(
-    paths.images.src,
-    watchOptions,
-    gulp.parallel(optimizeImages, optimizeSVG)
-  );
-  gulp.watch(paths.fonts.src, watchOptions, optimizeFonts);
-  gulp.watch(paths.icons.src, watchOptions, gulp.series(createSvgSprite));
-  gulp.watch(paths.static.src, watchOptions, copyStatic);
+  sync.init({ server: "dist", port: 3000 });
+  gulp.watch("src/**/*.pug", compilePug);
+  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.scripts.src, scripts);
+  gulp.watch(paths.images.src, optimizeImages);
+  gulp.watch(paths.icons.src, createSvgSprite);
+  done();
 };
 
-// مهمة البناء النهائية
-export const build = gulp.series(
-  clean,
-  ensureDistExists,
-  gulp.parallel(
-    lintCSS,
-    gulp.series(optimizeImages, optimizeSVG),
-    styles,
-    scripts,
-    optimizeFonts,
-    createSvgSprite,
-    copyStatic
-  ),
-  compilePug
-);
-
+export const build = gulp.series(clean, gulp.parallel(styles, scripts, optimizeImages, optimizeFonts, createSvgSprite), compilePug);
 export default gulp.series(build, serve);

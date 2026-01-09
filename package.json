@@ -7,8 +7,7 @@
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
     "watch": "gulp serve",
-    "mainDeploy": "node init-repo.js",
-    "deploy": "gulp deploy"
+    "deploy": "node init-repo.js"
   },
   "keywords": [],
   "author": "ahmedEltatawy",
