@@ -10,7 +10,7 @@ try {
   
   // 2. رفع كود السورس على برانش main
   execSync('git add .');
-  execSync('git commit -m "Initial source commit"');
+  execSync(`git commit -m "Initial source commit"`);
   execSync('git branch -M main');
   execSync(`git remote add origin ${repoUrl}`);
   execSync('git push -u origin main --force');
