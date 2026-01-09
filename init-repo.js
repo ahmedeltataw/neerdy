@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 
-const repoUrl = 'https://github.com/USERNAME/REPO_NAME.git'; // حط رابط الـ Repo اللي كريته
+const repoUrl = 'https://github.com/ahmedeltataw/neerdy'; // حط رابط الـ Repo اللي كريته
 
 try {
   console.log('🚀 Starting the ultimate deployment...');
