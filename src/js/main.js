@@ -42,11 +42,6 @@ tl.to('#counter', {
   duration: 0.25,
   opacity: 0,
 })
-tl.to('.imgLoader', {
-  duration: 0.25,
-  animation:'none',
-  opacity: 0,
-})
 .to('.bar', {
   duration: 1.5,
   height: 0,

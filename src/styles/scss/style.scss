@@ -117,14 +117,7 @@ a {
     font-size: 120px;
     font-weight: bold;
   }
-  figure{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: load 3s ease-in-out infinite ;
 
-  }
 
 }
 // no scroll
@@ -133,22 +126,3 @@ a {
   height: 100vh; /* يمنع أي تمرير */
 }
 /*  */
-// @include shaking('shake');
-@keyframes load {
-  0%{
-    transform: translate(-50%, -50%) scale(.4) rotate(0deg);
-    opacity: 0;
-  }
-  40%{
-    transform: translate(-50%, -50%) scale(.8) rotate(-15deg);
-    opacity: 1;
-  }
-  80%{
-    transform: translate(-50%, -50%) scale(1) rotate(15deg);
-    opacity: 1;
-  }
-  100%{
-    transform: translate(-50%, -50%) scale(.4) rotate(0deg);
-    opacity: 0;
-  }
-}

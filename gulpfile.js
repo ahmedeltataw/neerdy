@@ -35,9 +35,17 @@ const __dirname = path.dirname(__filename);
 // Task الرفع لـ GitHub Pages
 export const deploy = (cb) => {
   ghPages.publish(path.join(__dirname, 'dist'), {
-    branch: 'gh-pages',
-    message: 'Deploying to GitHub Pages', // رسالة الـ Commit اللي هتظهر على البرانش
-  }, cb);
+    branch: 'gh-pages', // إحنا بنجبره يرفع لبرانش الـ main
+    dotfiles: true,
+    message: 'Update production build'
+  }, (err) => {
+    if (err) {
+      console.error('❌ الرفع فشل يا صاحبي:', err);
+    } else {
+      console.log('✅ الموقع اترفع بنجاح على main!');
+    }
+    cb();
+  });
 };
 // إعدادات Sharp للسرعة القصوى
 const sharpConfig = {
@@ -251,39 +259,27 @@ export const scripts = () => {
 export const optimizeImages = () => {
   return gulp
     .src(paths.images.src)
+    // مهم جداً: الـ changed بيخلي جلب ميعملش معالجة غير للصور الجديدة بس
     .pipe(changed(paths.images.dest, { extension: ".webp" }))
     .pipe(
-      through2.obj(async function (file, _, cb) { // لاحظ استخدام function عادية عشان نستخدم this
+      through2.obj(async function (file, _, cb) {
         if (![".jpg", ".jpeg", ".png"].includes(file.extname.toLowerCase())) {
           return cb(null, file);
         }
 
         try {
-          const image = sharp(file.contents);
-          const metadata = await image.metadata();
-
-          // 1. إنشاء نسخة Retina (@2x)
-          const retinaBuffer = await image.clone().webp(sharpConfig.webp).toBuffer();
-          let retinaFile = file.clone();
-          retinaFile.contents = retinaBuffer;
-          retinaFile.stem += "@2x";
-          retinaFile.extname = ".webp";
-          this.push(retinaFile); // نستخدم this.push بدلاً من cb
-
-          // 2. إنشاء النسخة العادية (نصف الحجم)
-          const normalBuffer = await image
-            .clone()
-            .resize({ width: Math.round(metadata.width / 2) })
-            .webp(sharpConfig.webp)
+          // بنحول لـ webp مرة واحدة وبجودة متوازنة (75-80)
+          const buffer = await sharp(file.contents)
+            .webp({ quality: 75, effort: 2 }) // effort 2 بيخلي التحويل أسرع
             .toBuffer();
-          file.contents = normalBuffer;
-          file.extname = ".webp";
-          this.push(file); // نستخدم this.push للملف الثاني
 
-          cb(); // هنا بننادي cb مرة واحدة فقط في النهاية بدون ملفات
+          file.contents = buffer;
+          file.extname = ".webp";
+          
+          cb(null, file);
         } catch (err) {
           console.error(`Error processing ${file.basename}:`, err);
-          cb(err); // في حالة الخطأ بنمرر الخطأ للـ cb
+          cb(err);
         }
       })
     )

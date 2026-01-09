@@ -1,15 +1,5 @@
 include ./ui/_Image.pug
 .preload
-    figure.w-100.imgLoader 
-        +Image({ 
-            name: 'Logo_1', 
-            width: 200,
-            height: 200,
-            alt: ' logo', 
-            lazy: false,
-            responsive: true,
-            sizes: '(max-width: 600px) 480px, 800px'
-            }).logo
     h1.counter#counter 0 
     .bars 
         - for (let i = 1; i <= 10; i++)
