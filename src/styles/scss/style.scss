@@ -107,6 +107,9 @@ a {
       height: 100%;
       background-color: var(--secondColor);
     }
+    .s{
+      scroll-snap-type: mandatory;
+    }
 
   }
   .counter{
