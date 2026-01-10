@@ -68,6 +68,7 @@ export const scripts = () => {
     outdir: 'dist', // خليها dist بس هنا
     // السطر ده السحر اللي هيخلي كل حاجة تروح مكانها
     entryNames: '[ext]/[name]', 
+    
     splitting: false, 
     format: 'esm', 
     sourcemap: !isProd,
@@ -255,7 +256,7 @@ const buildTasks = gulp.series(
   clean,
   gulp.parallel(styles, scripts, optimizeImages, optimizeFonts, createSvgSprite, copyStatic),
   compilePug,
-  criticalTask,
+  // criticalTask,
   seoAutomation
 );
 

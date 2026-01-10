@@ -13,7 +13,7 @@ const swiperInit = () => {
         // تفعيل الموديولات المستوردة
         modules: [Navigation], 
         
-        slidesPerView: 5,
+        slidesPerView: 1,
         spaceBetween: 10,
         centeredSlides: true,
         loop: true,
@@ -22,12 +22,16 @@ const swiperInit = () => {
           prevEl: ".swiper-button-prev",
         },
         breakpoints: {
+          520: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
           640: {
             slidesPerView: 2,
             spaceBetween: 10,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 10,
           },
           1024: {

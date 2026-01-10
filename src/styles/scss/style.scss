@@ -100,9 +100,15 @@ a {
       .card {
         transform: scale(1.1);
         filter: brightness(1) contrast(1) grayscale(0);
+        @media(max-width:639px){
+          transform: scale(1);
+        }
 
       }
     }
+    @media(max-width:639px){
+          padding-block: 15px;
+        }
   }
 
   .swiper-button-next,
