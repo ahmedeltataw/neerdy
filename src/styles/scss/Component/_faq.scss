@@ -1,6 +1,7 @@
 // FAQ Section Styling
 
 .faq {
+
   // background-color: var(--white);
   .faq-list {
     max-width: 800px;
@@ -34,6 +35,7 @@
 
     &.active {
       background-color: var(--white);
+
       .faq-question::after {
         transform: rotate(90deg);
       }
@@ -67,7 +69,7 @@
       &::after {
         content: "\276F";
         // font-family: "Font Awesome 6 pro";
-        font-weight: 900;
+        font-weight: 700;
         transition: transform 0.3s ease;
         transform: rotate(273deg);
       }

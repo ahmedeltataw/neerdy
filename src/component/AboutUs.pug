@@ -1,20 +1,16 @@
 include ./ui/_Button.pug
 include ./ui/_Image.pug
-section.about.pos-rel.aboutShape 
+section.about.pos-rel
     .container
-        div(class="d-grid grid-col-1 lg:grid-col-2 items-center gap-14 py-8")
-            .content.me-8 
-                h2.tag.mainHeading وش هي Neerdy ؟
-                p.mb-12.fs-20.fw-600.line-relaxed.text-gray 
-                    | Neerdy لعبة ثقافية عائلية تجمعكم وترجعكم للحياة الاجتماعية وتعطي جو تحدي، وتزيدكم معرفة ومعلومات. اجتمع مع قروبك وادخلوا قيم سريع فيه 6 فئات تضم 36 سؤال. ومعها 3 وسائل مساعدة لكل فريق. جمّع فريقك الحين وابدأ التحدي.
-                +button({ 
-                            text: 'ابدء اللعب', 
-                            link: '/', 
-                        }).primary.large
-            figure.h-full.round-lg.pos-rel
+            .content.text-center.mx-auto 
+                h2.fs-res-96.mb-6 نيردي
+                p.pb-8.fs-res-36.fw-400.text-dark.line-40 
+                    | لعبة أسئلة جماعية تضم أكثر من 200 فئة منوعة وتحتوي على أقسام خاصة بالكبار و الطلبة والأطفال
+                
+            figure.round-lg.pos-rel.iframeVideo.mx-auto.my-14
                 iframe(
                     width="100%"
-                    height="500"
+                    height="100%"
                     class="round-lg "
                     src="https://www.youtube-nocookie.com/embed/fY_t3wFX6q8"
                     title="YouTube video player"
@@ -25,9 +21,20 @@ section.about.pos-rel.aboutShape
                 )
                 +Image({ 
                     name: 'boy-img', 
-                    width: 100,
-                    height: 100,
-                    alt: ' logo', 
+                    width: 120,
+                    height: 120,
+                    
                     lazy: false,
                     
                     }).boyImg
+                +Image({ 
+                    name: 'girl-img', 
+                    width: 200,
+                    height: 200,
+                    
+                    }).girlImg
+            div(class="d-flex items-center w-full justify-center pt-8")
+                +button({ 
+                            text: 'اشتر باقه وألعب', 
+                            link: '/', 
+                        }).primary.large

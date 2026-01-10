@@ -1,16 +1,24 @@
 @use "../helpers/extends" as *;
-.hero{
-    height: 700px;
-    padding-block: 120px 0px;
-    background-color: var(--orange);
+
+.hero {
+    height: 600px;
+
+    // background: radial-gradient(circle, #0056a3 0%, #003366 100%);
     
-    &::before{
-        @extend %A_B;
-        background: url('../assets/images/BGDown-BG.svg') no-repeat center center / cover;
-        height: 120px;
-        width: 100%;
-        bottom: 0;
-        // transform: scaleY(-1);
+    background: radial-gradient(circle, #0056a3 0%, #001f3f 100%);
+    .heroLogo{
+        transform: scale(1.3);
     }
+    clip-path: ellipse(100% 100% at 50% 0%);
+    // background: linear-gradient(180deg, #FFD700 0%, #E6B800 100%);
+    // background: linear-gradient(-135deg, #2DAAE1 0%, #004B8D 50%, #001a33 100%);
+    // &::before {
+    //     @extend %A_B;
+    //     background: url('../assets/images/BGDown-BG.svg') no-repeat center center / cover;
+    //     height: 120px;
+    //     width: 100%;
+    //     bottom: 0;
+    //     // transform: scaleY(-1);
+    // }
 
 }

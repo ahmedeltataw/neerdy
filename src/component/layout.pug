@@ -31,8 +31,11 @@ html(lang="ar")
       //- // Favicons & Theme
       link(rel="icon", href="./assets/images/favicon.ico", type="image/x-icon")
       meta(name="theme-color", content="#ffffff")
+      if isProd
+         link(rel="preload" href="assets/fonts/ArbFONTS-Cairo-Regular-1.woff2" as="font" type="font/woff2" crossorigin)
+         link(rel="preload" href="assets/fonts/Cairo-Bold.woff2" as="font" type="font/woff2" crossorigin)
       //- css style
-      link(rel="stylesheet", href="./css/swiper.css")
+      link(rel="stylesheet", href="css/vendors.css")
       link(rel="stylesheet", href="./css/style.css")
    body
       include  ./Header.pug
@@ -40,5 +43,5 @@ html(lang="ar")
          block content
       .overLay#overLay
       //- include  ./footer.pug
-      script(src="./js/swiper.js") 
-      script(src="./js/main.js") 
+      script(src="js/vendors.js" type="module")
+      script(src="js/main.js" type="module")

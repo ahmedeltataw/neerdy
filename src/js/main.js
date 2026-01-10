@@ -1,4 +1,4 @@
-
+// import { Swiper, Navigation } from './vendors.js';
 // تهيئة FAQ
 const initFAQ = () => {
   const faqItems = document.querySelectorAll(".faq-item");
@@ -60,31 +60,4 @@ overLay.addEventListener("click", () => {
   mobileMenu("close");
 });
 
-// ====swiper======
 
-new Swiper(".cateSwiper", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  centeredSlides: true,
-  loop:true,
-  // effect: "cards",
-      // grabCursor: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  breakpoints: {
-    640: {
-      slidesPerView: 2,
-      spaceBetween: 10,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 10,
-    },
-    1024: {
-      slidesPerView: 4,
-      spaceBetween: 10,
-    },
-  },
-});

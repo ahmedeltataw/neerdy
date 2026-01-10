@@ -1,49 +1,36 @@
-include ./ui/_Image.pug
-section.help.pos-rel.helpShape.bg-white 
+include ./ui/_Icon.pug
+section.help.pos-rel
     .container
-        .d-flex.items-center.justify-center.flex-col.gap-2 
-            h2.tag.mainHeading.text-center.reverse وسائل المساعدة
-            p.mb-10.text-gray.fw-700.fs-20  لكل فريق 3 وسائل مساعدة, استخدمها بحذر منها قبل لا تختار السؤال وفي منها بعد ماتختار السؤال
+        .text-center.w-900.mx-auto 
+            h2.fs-res-60.fw-400.text-dark.mb-10  وسائل المساعدة
 
         div(class="d-grid grid-col-1 sm:grid-col-2 lg:grid-col-4 gap-4")
             .cardHelp.d-flex.items-center.justify-between.flex-col.gap-14.p-12.bg-input.round-lg  
-                .content.text-center 
+                .contentHelp.text-center 
                     h3.cardTitle اتصال بصديق
-                    figure.w-74.mx-auto.my-10 
-                        +Image({ 
-                            name: 'help_1', 
-                            alt: ' help_1', 
-                            
-                        })
+                    figure.w-full.h-70.mx-auto.my-10 
+                        +Icon("help_1" , 'iconHelp')
                     p.cardP.o-70 صديقك اللي يعرف كل شي هذا وقته دق عليه !
                 p.HowUseHelp.bg-dark.fs-18.fw-600.d-flex.items-center.justify-center.px-12.py-6.text-center.round-full.text-white  تستخدمها بعد ما تشوف السؤال
             .cardHelp.d-flex.items-center.justify-between.flex-col.gap-14.p-12.bg-input.round-lg  
-                .content.text-center 
+                .contentHelp.text-center 
                     h3.cardTitle الحفرة
-                    figure.w-74.mx-auto.my-10 
-                        +Image({ 
-                            name: 'help_2', 
-                            alt: 'صورة المنتج', 
-                            
-                        })
+                    figure.w-full.h-70.mx-auto.my-10 
+                        +Icon("help_2" , 'iconHelp')
                     p.cardP.o-70 احفر لهم! جاوب صح, واخصم عدد النقاط اللي فزت فيها من نقاط الفريق الثاني
                 p.HowUseHelp.bg-main.fs-18.fw-600.d-flex.items-center.justify-center.px-12.py-6.text-center.round-full.text-white تستخدمها قبل ما تشوف السؤال
             .cardHelp.d-flex.items-center.justify-between.flex-col.gap-14.p-12.bg-input.round-lg  
-                .content.text-center 
+                .contentHelp.text-center 
                     h3.cardTitle جاوب جوابين
-                    figure.w-74.mx-auto.my-10 
-                        img(src="../assets/images/help_3.svg", alt="help" ,loading="lazy")
+                    figure.w-full.h-70.mx-auto.my-10 
+                        +Icon("help_3" , 'iconHelp')
                     p.cardP.o-70 متردد بجوابين؟ هذه لك. جاوب بالآثنين عشان تضمن النقاط
                 p.HowUseHelp.bg-dark.fs-18.fw-600.d-flex.items-center.justify-center.px-12.py-6.text-center.round-full.text-white تستخدمها بعد ما تشوف السؤال
             .cardHelp.d-flex.items-center.justify-between.flex-col.gap-14.p-12.bg-input.round-lg  
-                .content.text-center 
+                .contentHelp.text-center 
                     h3.cardTitle  استريح
-                    figure.w-74.mx-auto.my-10 
-                        +Image({ 
-                            name: 'help_4', 
-                            alt: ' help_4', 
-                            
-                        })
+                    figure.w-full.h-70.mx-auto.my-10 
+                        +Icon("help_4" , 'iconHelp')
                     p.cardP.o-70 اختار اكثر شخص مثقف ضدك, وخله يستريح شوي عن المشاركة في إجابة هالسؤال
                 p.HowUseHelp.bg-dark.fs-18.fw-600.d-flex.items-center.justify-center.px-12.py-6.text-center.round-full.text-white تستخدمها بعد ما تشوف السؤال
 

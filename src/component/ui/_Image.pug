@@ -1,4 +1,4 @@
-mixin Image({ name, alt = "", lazy = true, width, height })
+mixin Image({ name, alt = "", lazy = true, width, height ,isHero = false })
   - 
     const dims = getImageSize(name);
     const finalWidth = width || dims.width;
@@ -7,9 +7,10 @@ mixin Image({ name, alt = "", lazy = true, width, height })
 
   img(
     src=srcPath
-    alt=alt
+    alt=(alt == "" ? name : alt)
     width=(finalWidth > 0 ? finalWidth : null)
     height=(finalHeight > 0 ? finalHeight : null)
     loading=lazy ? "lazy" : "eager"
+    fetchpriority=(isHero ? "high" : "auto")
     decoding="async"
   )&attributes(attributes)

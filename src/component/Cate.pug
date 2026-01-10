@@ -1,65 +1,110 @@
 include ./ui/_Image.pug
-section.cate.pos-rel.cateShape 
+section.cate.pos-rel
     .container  
-        .d-flex.items-center.justify-center.flex-col.gap-2 
-            h2.tag.mainHeading.text-center.reverse الفئات
-            p.mb-10.text-gray.fw-700.fs-20 جمعنالكم فئات متنوعة تقدرون تختارون اللي تبونه بس خلكم حذرين لأنها أساس اللعبة.
-        .swiper.cateSwiper
+        .text-center.w-900.mx-auto 
+            h2.fs-res-70.fw-400.text-dark شرح الفئات
+            p.mb-10.fs-res-36.line-40.text-dark بعض الفئات في اللعبة لها طريقة لعب مختلفة ، شوفوا طريقتها قبل لا تلعبونها
+        .swiper.cateSwiper(dir="rtl")
             .swiper-wrapper
                 .swiper-slide.round-lg
                     .card.border-2.round-lg 
                         figure.pos-rel
                             +Image({ 
                                 name: '1', 
-                                alt: 'صورة المنتج', 
+                                alt: 'cate_image', 
                                 
                             }).round-s
-                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
                 .swiper-slide.round-lg
                     .card.border-2.round-lg 
                         figure.pos-rel
                             +Image({ 
                                 name: '2', 
-                                alt: 'صورة المنتج', 
+                                alt: 'cate_image', 
                                 
                             }).round-s
-                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
                 .swiper-slide.round-lg
                     .card.border-2.round-lg 
                         figure.pos-rel
                             +Image({ 
                                 name: '3', 
-                                alt: 'صورة المنتج', 
+                                alt: 'cate_image', 
                                 
                             }).round-s
-                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
                 .swiper-slide.round-lg
                     .card.border-2.round-lg 
                         figure.pos-rel
                             +Image({ 
                                 name: '4', 
-                                alt: 'صورة المنتج', 
+                                alt: 'cate_image', 
                                 
                             }).round-s
-                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
                 .swiper-slide.round-lg
                     .card.border-2.round-lg 
                         figure.pos-rel
                             +Image({ 
                                 name: '5', 
-                                alt: 'صورة المنتج', 
+                                alt: 'cate_image', 
                                 
                             }).round-s
-                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
                 .swiper-slide.round-lg
                     .card.border-2.round-lg
                         figure.pos-rel
                             +Image({ 
                                 name: '6', 
-                                alt: 'صورة المنتج', 
+                                alt: 'cate_image', 
                                 
                             }).round-s
-                            figcaption.fs-20.fw-900.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg
+                        figure.pos-rel
+                            +Image({ 
+                                name: '6', 
+                                alt: 'cate_image', 
+                                
+                            }).round-s
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg
+                        figure.pos-rel
+                            +Image({ 
+                                name: '6', 
+                                alt: 'cate_image', 
+                                
+                            }).round-s
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg
+                        figure.pos-rel
+                            +Image({ 
+                                name: '6', 
+                                alt: 'cate_image', 
+                                
+                            }).round-s
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg
+                        figure.pos-rel
+                            +Image({ 
+                                name: '6', 
+                                alt: 'cate_image', 
+                                
+                            }).round-s
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
+                .swiper-slide.round-lg
+                    .card.border-2.round-lg
+                        figure.pos-rel
+                            +Image({ 
+                                name: '6', 
+                                alt: 'cate_image', 
+                                
+                            }).round-s
+                            figcaption.fs-20.fw-700.p-6.text-center.bg-main.text-white.round-e اسلاميات 
 
             .swiper-button-next
             .swiper-button-prev

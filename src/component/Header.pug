@@ -1,43 +1,38 @@
 include ./ui/_Button.pug
 include ./ui/_Image.pug
 include ./ui/_Icon.pug
-header.pos-abs.t-0.w-full.z-9999 
+header.z-9999.bg-Body
     .container 
         nav.d-flex.items-center.justify-between.py-4 
-            button(class="btn lg:d-none" ,role="button")#openMenu 
-                +Icon('menu' , className='mx-auto text-white ')
-            ul(class="lg:d-flex d-none").items-center.gap-12.MobileMenu.pos-rel#MobileMenu
-                li(class="lg:d-none ")
-                    button(role="button").btn#closeMenu 
-                        +Icon('x' , className='mx-auto text-dark ')
-                li 
-                    a(href="/" ,class="fs-20 fw-600 text-white") الرئيسية  
-                li 
-                    a(href="/" ,class="fs-20 fw-600 text-white") كيف العب؟  
-                li 
-                    a(href="/" ,class="fs-20 fw-600 text-white") تواصل معانا  
-                li(class="lg:d-none") 
-                    +button({ 
-                        text: 'العب', 
-                        link: '/', 
-                    }).primary
-
-            figure.w-62 
-                  +Image({ 
-                    name: 'Logo_1', 
-                    width: 200,
-                    height: 200,
-                    alt: ' logo', 
-                    lazy: false,
+            div(class='d-flex items-center gap-6')
+                button(class="btn lg:d-none" ,role="button")#openMenu 
+                    +Icon('menu' , className='mx-auto text-white ')
+                figure.w-90 
+                    +Image({ 
+                        name: 'Logo_1', 
+                        width: 230,
+                        height: 230,
+                        alt: ' logo', 
+                        lazy: false,
+                        
+                        }).logo
+                ul(class="lg:d-flex d-none").items-center.gap-12.MobileMenu.pos-rel#MobileMenu
+                    li(class="lg:d-none ")
+                        button(role="button").btn#closeMenu 
+                            +Icon('x' , className='mx-auto text-dark ')
+                    li 
+                        a(href="/" ,class="fs-28 fw-700 ") العب  
+                    li 
+                        a(href="/" ,class="fs-28 fw-700 ") تواصل معنا
                     
-                    }).logo
+                    li(class="lg:d-none") 
+                        +button({ 
+                            text: 'العب', 
+                            link: '/', 
+                        }).primary
+
 
             menu.d-flex.items-center.gap-6
-                li(class="lg:d-inline-block d-none")  
-                    +button({ 
-                        text: 'العب', 
-                        link: '/', 
-                    }).primary
                 li 
                     +button({ 
                         text: 'تسجيل الدخول', 
