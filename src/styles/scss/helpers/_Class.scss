@@ -19,6 +19,7 @@
 .bg-white {
     background-color: var(--white);
 }
+
 .bg-Body {
     background-color: var(--BodyBg);
 }
@@ -38,6 +39,7 @@
 .bg-dark {
     background-color: var(--dark);
 }
+
 // font
 
 // z-index
@@ -87,31 +89,48 @@
 }
 
 // 
-.iframeVideo{
+.iframeVideo {
 
     aspect-ratio: 16/9;
-    
-}
-.content ,.iframeVideo,.w-900{
-    @include res('width', 300px, 900px);
-    
-}
-.fs-res-96{
-    @include res('font-size', 48px, 96px);
 
 }
-.fs-res-70{
+
+.content,
+.iframeVideo,
+.w-900 {
+    @include res('width', 300px, 900px);
+
+}
+
+.fs-res-96 {
+    @include res('font-size', 52px, 96px);
+
+}
+
+.fs-res-70 {
     @include res('font-size', 36px, 70px);
 }
-.fs-res-60{
+
+.fs-res-60 {
     @include res('font-size', 28px, 60px);
 }
-.fs-res-36{
-    @include res('font-size', 18px, 30px);
-    &.line-40{
-        line-height: 40px
-    }
+
+.fs-res-24 {
+    @include res('font-size', 18px, 24px);
 }
+
+.fs-res-36 {
+    @include res('font-size', 18px, 30px);
+
+
+}
+
+.line-40 {
+    @include res('line-height', 20px, 40px);
+}
+
+
+
 // 
 .tag {
     @include res('font-size', 24px, 36px);
@@ -139,7 +158,8 @@
 
     }
 }
-.icon-200{
+
+.icon-200 {
     width: 200px;
 }
 
@@ -162,21 +182,176 @@
 }
 
 .boyImg {
-    position: absolute;
-    bottom: 0;
-    right: -60px;
+    // right: -60px;
+    @include res('right', -20px, -80px);
+    @include res('width', 50px, 120px);
 
-    @media(max-width:991px) {
-        left: -60px;
-        right: auto;
-    }
-
-    @media(max-width:767px) {
-        display: none;
+    @media(min-width:768px) {
+        right: -80px;
     }
 }
-.girlImg{
+
+.girlImg {
+
+    @include res('left', -20px, -80px);
+    @include res('width', 80px, 200px);
+
+    @media(min-width:768px) {
+        left: -80px;
+    }
+}
+
+// 
+
+.errorMessage {
+    display: none;
+    font-size: 14px;
+    color: red;
+    padding-inline: 1rem;
+    transition: var(--t-s);
+}
+
+input:not([type="checkbox"]),
+textarea {
+    border-color: var(--inputStroke);
+    background-color: var(--inputBG);
+    width: 100%;
+    height: 100%;
+    padding-inline-start: 1rem;
+    border-radius: 999px;
+    transition: var(--t-s);
+
+    &:focus-visible,
+    &:focus {
+        outline: none;
+    }
+}
+
+.formGroup:not(.checkboxGroup) {
+
+    input:not([type="checkbox"]),
+    textarea {
+        &::placeholder {
+            opacity: 0;
+            color: var(--inputHint);
+            transition: var(--t-s);
+        }
+
+        &:not(:placeholder-shown),
+        &:focus,
+        &:valid {
+            &::placeholder {
+                opacity: 1;
+            }
+        }
+    }
+
+    label {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        inset-inline-start: 1rem;
+        transition: var(--t-s);
+
+        &.labelMessage {
+            top: 15%;
+        }
+
+    }
+
+    &:has(input:not(:placeholder-shown), input:not([type="checkbox"]):focus, textarea:not(:placeholder-shown), textarea:focus) {
+        label {
+            top: 0;
+            padding-inline: 8px;
+            background: linear-gradient(to bottom, #F8F9FA 0%, #f1f2f3 95.17%);
+            border-right: 2px solid var(--inputStroke);
+            border-left: 2px solid var(--inputStroke);
+            font-size: 14px;
+        }
+
+        input:not([type="checkbox"]):placeholder,
+        textarea:placeholder {
+            opacity: 1;
+        }
+    }
+
+    textarea {
+        height: 150px;
+        border-radius: 24px;
+        padding-top: 12px;
+    }
+}
+
+.checkboxGroup {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+        accent-color: var(--secondColor);
+    }
+}
+
+label {
+    font-size: 18px;
+}
+
+.searchGroup {
+    width: min(100%, 500px);
+
+    input::placeholder {
+        color: var(--dark);
+        @include res('font-size', 14px, 18px);
+        font-weight: 700;
+    }
+}
+
+.center-pos_Y {
     position: absolute;
-    top: 0;
-    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gridLayoutGame {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+
+
+.tooltipContent {
+    padding: 8px 8px;
+    background-color: var(--dark);
+    color: var(--white);
+    border-radius: 8px;
+    position: absolute;
+    top: 32px;
+    inset-inline-end: 8px;
+    width: 90%;
+    visibility: hidden;
+    opacity: 0;
+
+    span {
+        display: inline-block;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+.tooltip:hover~.tooltipContent {
+    visibility: visible;
+    opacity: 1;
+}
+
+.gridLayoutGame {
+    .cardGame { 
+        transition: var(--t-s);
+        &:hover,
+        &.active {
+            outline:  3px solid var(--secondColor);
+        }
+    }
 }

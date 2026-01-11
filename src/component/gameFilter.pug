@@ -1,0 +1,33 @@
+include ./ui/_Button.pug
+include ./ui/_Icon.pug
+
+.gameFilter(class='d-flex items-center justify-between gap-8 flex-wrap w-full my-10') 
+    .searchGroup.h-30.pos-rel 
+        label(for="searchGame" ,class='d-flex items-center justify-center pos-abs l-0 center-pos_Y') 
+            +button({
+                
+                type:'submit',
+                icon:'search',
+                aria:'search button'
+            }
+            ).btn_icon(role='button')
+        input(type="text" ,placeholder='البحث باسم الفئة' ,id='searchGame' , name='searchGameName')
+
+    menu.filter(class='d-flex items-center  gap-2 flex-wrap ')  
+        li
+            +button({
+                    
+                    type:'button',
+                    icon:'grid',
+                    aria:'grid layout'
+                }
+                ).btn_icon.small(role='button')
+        li
+            +button({
+                    
+                    type:'button',
+                    icon:'dropLayout',
+                    aria:'grid layout'
+                }
+                ).btn_icon.small(role='button')
+        

@@ -6,19 +6,26 @@ button {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2), 0 2px 10px 0 rgba(0, 0, 0, .1);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border-radius: 999px;
+    @include res('font-size', 14px, 20px);
+    @include res('padding-inline', 14px, 20px);
+    @include res('padding-block', 6px, 10px);
 
     &:has(svg) {
         width: 40px;
         height: 40px;
         box-shadow: none;
         border: 0;
+        padding-block: 0;
+        padding-inline: 0;
     }
 
     &.primary {
         background-color: var(--mainColor);
+        color: var(--white);
 
-        :is(a, span, svg) {
-            color: var(--white);
+        &.changeColor {
+            background-color: var(--secondColor);
+            color: var(--dark);
         }
     }
 
@@ -37,22 +44,122 @@ button {
             box-shadow: 3px 9px 0 #0b0b0b, 15px 15px 20px rgba(64, 164, 122, 0.2);
         }
     }
+
+    &.btn_icon {
+        width: 80px;
+        height: 60px;
+
+        background-color: var(--mainColor);
+        display: flex;
+            align-items: center;
+            justify-content: center;
+        svg {
+            width: 30px;
+            height: 30px;
+            color: var(--white);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        &:hover {
+            background-color: var(--secondColor);
+
+            svg {
+                color: var(--dark);
+            }
+        }
+
+        &.small,
+        &.info,
+        &.verySmall {
+            
+            width: 45px;
+            height: 45px;
+            background-color: transparent;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        &.small {
+            svg {
+                width: 24px;
+                height: 24px;
+                color: var(--gray);
+            }
+
+            &:hover {
+                svg {
+                    color: var(--mainColor);
+                }
+            }
+        }
+
+        &.info {
+            background-color: #3293e9;
+
+            svg {
+                width: 30px;
+                height: 30px;
+                color: var(--white);
+            }
+
+            &:hover {
+                background-color: var(--mainColor);
+
+                svg {
+                    color: var(--white);
+                }
+            }
+
+            &.tooltip {
+                position: absolute;
+                top: -15px;
+                inset-inline-end: -15px;
+            }
+        }
+
+        &.verySmall {
+            margin-top: 4px;
+            width: fit-content;
+            height: auto;
+            background-color: var(--secondColor);
+            font-size: 12px;
+            padding: 2px 8px;
+
+            gap: 4px;
+            color: var(--dark);
+            font-weight: 700;
+
+            svg {
+                height: 18px;
+                width: 18px;
+                color: rgb(221, 9, 9);
+            }
+        }
+    }
 }
 
 // link button 
 a {
-    &:has(svg) {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
+
 
     &.secondary {
-        background-color: var(--BodyBg);
+        background-color: var(--white);
         color: var(--dark);
 
         :is(svg) {
             color: var(--dark);
+        }
+
+        &:hover {
+            &.iconBtn {
+                background-color: var(--dark);
+
+                svg {
+                    color: var(--secondColor);
+                }
+            }
         }
     }
 
@@ -63,28 +170,65 @@ a {
         :is(svg) {
             color: var(--white);
         }
+
     }
 
     &.secondary,
     &.primary {
-        @include res('font-size', 16px, 20px);
+        @include res('font-size', 14px, 20px);
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2), 0 2px 10px 0 rgba(0, 0, 0, .1);
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         border-radius: 999px;
         padding: .625rem 1.5rem .5rem;
+        @include res('padding-inline', 16px, 24px);
+        @include res('padding-block', 8px, 12px);
+
         font-weight: 600;
         border: 2px solid var(--dark);
 
         &.large {
-            padding: .625rem 2.5rem .5rem;
-
+            @include res('padding-inline', 28px, 40px);
+            @include res('font-size', 16px, 22px);
         }
 
         &:hover {
             transform: translate(-3px, -9px);
             box-shadow: 3px 9px 0 #0b0b0b, 15px 15px 20px rgba(64, 164, 122, 0.2);
         }
+
     }
 
+    &.iconBtn {
+        padding: 0;
+        border: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+        svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &.normalLink {
+        font-size: 18px;
+        padding-inline-start: 1rem;
+        margin-bottom: 20px;
+        transition: var(--t-s);
+
+        &.Heavy {
+            @include res('font-size', 14px, 20px);
+            color: var(--dark);
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            text-decoration: underline;
+            color: var(--mainColor);
+        }
+    }
 }

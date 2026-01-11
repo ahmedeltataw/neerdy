@@ -1,3 +1,14 @@
-mixin Icon(name, className)
-  svg(class=`icon ${className || ''}`)
+mixin Icon(name, className = "" ,label = "")
+  //- إذا كان هناك label، نعتبر الأيقونة (Functional) وليست مجرد زينة (Decorative)
+  - const isDecorative = !label
+  
+  svg(
+    class=`icon ${className || ''}`
+    aria-hidden=isDecorative ? "true" : null
+    role=isDecorative ? "presentation" : "img"
+    focusable="false"
+  )&attributes(attributes)
+    if label
+      title= label
+    //- المسار نسبي بدون سلاش لضمان عمله على GitHub Pages
     use(xlink:href=`assets/icons/sprite.svg#icon-${name}`)

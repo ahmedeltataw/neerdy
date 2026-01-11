@@ -1,4 +1,6 @@
-mixin button({ text, style='', type='button', icon=false, link=false, iconDir='left' ,aria=''})
+
+include ./_Icon.pug
+mixin button({ text='', style='', type='button', icon=false, link=false, iconDir='left' ,aria=''})
   //- اختيار العنصر: لو فيه رابط يبقى <a> ولو مفيش يبقى <button>
   - const Tag = link ? 'a' : 'button'
   
@@ -12,13 +14,13 @@ mixin button({ text, style='', type='button', icon=false, link=false, iconDir='l
     
     //- الأيقونة جهة اليسار + النص
     if icon && iconDir === 'left'
-      svg.icon: use(xlink:href=`./assets/icons/sprite.svg#icon-${icon}`)
+      +Icon(`${icon}`)
       |  #{text}
     
     //- النص + الأيقونة جهة اليمين
     else if icon && iconDir === 'right'
       | #{text} 
-      svg.icon: use(xlink:href=`./assets/icons/sprite.svg#icon-${icon}`)
+      +Icon(`${icon}`)
     
     //- نص فقط (في حال مفيش أيقونة)
     else

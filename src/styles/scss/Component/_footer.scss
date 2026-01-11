@@ -1,0 +1,13 @@
+
+footer{
+    // height: 600px;
+    padding-block-start: 50px;
+    grid-template-rows: 1fr 80px;
+    clip-path: ellipse(150% 100% at 50% 100%);
+    @media(max-width:540px){
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        clip-path: none;
+        grid-template-rows: 1fr 50px;
+    }
+}

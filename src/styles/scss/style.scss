@@ -8,10 +8,12 @@
 // Component
 @use "./Component/hero";
 @use "./Component/faq";
+@use "./Component/auth";
 
 // ui
 @use "./Component/ui/button";
 @use "./Component/header";
+@use "./Component/footer";
 // customClass
 @use "./helpers/Class";
 
@@ -22,6 +24,7 @@
 body {
   font-family: "Cairo";
   background-color: var(--BodyBg);
+  
 }
 
 section:not(.hero) {
@@ -67,7 +70,9 @@ a {
   width: 20px;
   height: 20px;
   fill: currentColor;
+  stroke: currentColor; // في حال كانت الأيقونة تعتمد على الـ stroke
   vertical-align: middle;
+
   &.iconHelp{
     width: 100%;
     height: 100%;
@@ -119,7 +124,7 @@ a {
     height: 50px;
 
     svg {
-      width: 20px;
+      width: 16px;
       color: var(--white)
     }
 
@@ -134,7 +139,6 @@ a {
   object-fit: cover;
 }
 
-
 /* preload */
 
 // no scroll
@@ -145,3 +149,6 @@ a {
 }
 
 /*  */
+svg[aria-hidden="true"]{
+  display: inline-block;
+}

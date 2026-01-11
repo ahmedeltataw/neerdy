@@ -1,0 +1,68 @@
+extends ./component/layout.pug
+include ./component/ui/_Input.pug
+include ./component/ui/_Button.pug
+//- extends ./component/Header.pug
+
+block title
+  | نيردي |  إنشاء حساب جديد
+
+block content
+    section.auth.mx-auto
+
+        .container 
+            .form
+                .text-center.mx-auto.mb-8 
+                    h2.fs-res-36  إنشاء حساب جديد
+                form(action="") 
+                    +Input({
+                        type: 'text',
+                        id: 'userName',
+                        name: 'fullName',
+                        label: ' الإسم',
+                        placeholder: 'ادحل اسمك بالكامل',
+                        required: true,
+                    })
+                    +Input({
+                        type: 'email',
+                        id: 'userEmail',
+                        name: 'email',
+                        label: 'البريد الإلكتروني',
+                        placeholder: 'مثال: example@mail.com',
+                        required: true,
+                    })
+                    +Input({
+                        type: 'password',
+                        id: 'userPassword',
+                        name: 'EnterPassword',
+                        label: 'كلمة المرور',
+                        placeholder: 'ادخل كلمة المرور',
+                        required: true,
+                    })
+                    +Input({
+                        type: 'password',
+                        id: 'ConfirmationUserPassword',
+                        name: 'ConfirmationEnterPassword',
+                        label: 'تاكيد كلمة المرور',
+                        placeholder: 'ادخل كلمة المرور',
+                        required: true,
+                    })
+                    +Input({
+                        type: 'checkbox',
+                        id: 'acceptTerms',
+                        name: 'acceptTerms',
+                        label: 'أوافق على الشروط و الأحكام',
+                        placeholder: 'ادخل كلمة المرور',
+                        
+                    })
+                    
+                    div.d-flex.items-center.justify-center.flex-col.mt-12
+                        +button({
+                            text:'تسجيل ',
+                            type:'submit'
+                            }
+                        ).primary.changeColor.w-full
+                        +button({
+                            text:'هل لديك حساب؟',
+                            link:'Login.html',
+                            }
+                        ).normalLink.mt-8.Heavy.fw-400

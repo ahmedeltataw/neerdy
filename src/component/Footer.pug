@@ -1,0 +1,50 @@
+include ./ui/_Image.pug
+include ./ui/_Icon.pug
+include ./ui/_Button.pug
+footer.bg-main.d-grid(class="gap-8 md:gap-14 ")
+    .container.h-full
+        .d-grid(class='sm:grid-col-2 grid-col-1 gap-8 items-end ')
+            .footerAbout 
+                figure.w-100
+                    +Image({ 
+                        name: 'Logo_1', 
+                        width: '100%',
+                        height: '100%',
+                        alt: ' logo', 
+                        })
+                p.fs-20.fw-400.text-white 
+                  |  لعبة تحدي الأسئلة الأولى بالوطن العربي
+            menu.socialLink(class="d-flex items-center sm:justify-end justify-start gap-6 md:gap-12 flex-wrap")
+                li 
+                    +button({ 
+                        link: '/', 
+                        icon:'facebook',
+                        aria:'open facebook'
+                    }).secondary.iconBtn(rel='noopener noreferrer' , target="_blank")
+                li 
+                    +button({ 
+                        link: '/', 
+                        icon:'instagram',
+                        aria:'open instagram'
+                    }).secondary.iconBtn(rel='noopener noreferrer' , target="_blank")
+                li 
+                    +button({ 
+                        link: '/', 
+                        icon:'tiktok',
+                        aria:'open instagram'
+                    }).secondary.iconBtn(rel='noopener noreferrer' , target="_blank")
+                li 
+                    +button({ 
+                        link: '/', 
+                        icon:'twitter',
+                        aria:'open instagram'
+                    }).secondary.iconBtn(rel='noopener noreferrer' , target="_blank")
+                li 
+                    +button({ 
+                        link: '/', 
+                        icon:'youtube',
+                        aria:'open instagram'
+                    }).secondary.iconBtn(rel='noopener noreferrer' , target="_blank")
+    div.py-6.d-flex.items-center.justify-center
+        p.copyRight.fs-20.text-white
+            | © 2026 نيردي جميع الحقوق محفوظة.

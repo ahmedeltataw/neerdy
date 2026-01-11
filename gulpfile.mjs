@@ -223,8 +223,17 @@ export const optimizeImages = () => {
 export const createSvgSprite = () => {
   return gulp.src(paths.icons.src)
     .pipe(svgmin())
-    .pipe(cheerio({ run: ($) => $('[fill]').removeAttr('fill'), parserOptions: { xmlMode: true } }))
-    .pipe(svgSprite({ mode: { symbol: { dest: ".", sprite: "sprite.svg" } }, shape: { id: { generator: "icon-%s" } } }))
+    .pipe(cheerio({
+      run: ($) => {
+        $('[fill]').removeAttr('fill');
+        $('[stroke]').removeAttr('stroke'); // أضف هذا السطر إذا كانت الأيقونات تعتمد على الخطوط
+      },
+      parserOptions: { xmlMode: true }
+    }))
+    .pipe(svgSprite({
+      mode: { symbol: { dest: ".", sprite: "sprite.svg" } },
+      shape: { id: { generator: "icon-%s" } }
+    }))
     .pipe(gulp.dest(paths.icons.dest));
 };
 // 6. الرفع لـ GitHub Pages

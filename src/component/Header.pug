@@ -1,34 +1,34 @@
 include ./ui/_Button.pug
 include ./ui/_Image.pug
 include ./ui/_Icon.pug
-header.z-9999.bg-Body
+header.z-9999.bg-white
     .container 
         nav.d-flex.items-center.justify-between.py-4 
             div(class='d-flex items-center gap-6')
-                button(class="btn lg:d-none" ,role="button")#openMenu 
-                    +Icon('menu' , className='mx-auto text-dark ')
-                figure.w-90 
+                button(class="btn md:d-none" ,role="button")#openMenu 
+                    +Icon('menu' , className='mx-auto text-dark ' ," افتح القائمة  ")
+                a.logo(href='index.html' , aria-label='click logo to go homePage')
                     +Image({ 
                         name: 'Logo_1', 
-                        width: 230,
-                        height: 230,
+                        width: '100%',
+                        height: '100%',
                         alt: ' logo', 
                         lazy: false,
                         
-                        }).logo
+                        })
                 ul(class="lg:d-flex d-none").items-center.gap-12.MobileMenu.pos-rel#MobileMenu
-                    li(class="lg:d-none ")
+                    li(class="md:d-none ")
                         button(role="button").btn#closeMenu 
                             +Icon('x' , className='mx-auto text-dark ')
                     li 
-                        a(href="/" ,class="fs-28 fw-700 ") العب  
+                        a(href="startGame.html" ,class="fs-28 fw-700 ") العب  
                     li 
-                        a(href="/" ,class="fs-28 fw-700 ") تواصل معنا
+                        a(href="ContactUs.html" ,class="fs-28 fw-700 ") تواصل معنا
                     
-                    li(class="lg:d-none") 
+                    li(class="md:d-none") 
                         +button({ 
                             text: 'العب', 
-                            link: '/', 
+                            link: 'startGame.html', 
                         }).primary
 
 
@@ -36,5 +36,5 @@ header.z-9999.bg-Body
                 li 
                     +button({ 
                         text: 'تسجيل الدخول', 
-                        link: '/', 
+                        link: 'Login.html', 
                     }).secondary

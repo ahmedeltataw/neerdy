@@ -1,0 +1,48 @@
+include ./_Icon.pug
+include ./_Button.pug
+
+mixin Input ({type='text', id, name, placeholder, required, label, svg=false, errorMsg, isPassword=false, textarea=false, value=''})
+    //- تحديد الفئات بناءً على نوع الحقل
+    - let groupClass = type === 'checkbox' ? 'checkboxGroup' : 'formGroup'
+    - let heightClass = (textarea || type === 'checkbox') ? '' : 'h-30'
+
+    div(class=`${groupClass} pos-rel w-full ${heightClass}`)
+        if textarea
+            textarea(
+                id= id, 
+                name= name, 
+                placeholder= placeholder || " ", 
+                required= required,
+                aria-describedby= id + "Error",
+                aria-required= required ? "true" : "false"
+            )= value
+        else
+            input(
+                type= type, 
+                id= id, 
+                name= name, 
+                value= value,
+                placeholder= placeholder || " ", 
+                required= required,
+                aria-describedby= id + "Error",
+                aria-required= required ? "true" : "false"
+            )
+            
+        label(for= id ,class=`${textarea == true ? 'labelMessage': ''}`)= label
+
+        //- رابط نسيت كلمة المرور يظهر فقط إذا كان الحقل لكلمة المرور
+        if isPassword 
+            +button({
+                text: 'نسيت كلمة المرور؟',
+                link: 'forgetPassword.html',
+            }).normalLink.text-end.w-full.text-dark
+        
+        //- رسالة الخطأ
+        if type !== 'checkbox'
+            span.errorMessage(id= id + "Error", aria-live="polite")
+                = errorMsg || "هذا الحقل مطلوب أو غير صحيح"
+        
+        //- إظهار الأيقونة (مثل أيقونة العين لكلمة المرور)
+        if svg 
+            .icon-wrapper
+                +Icon(`eye`)

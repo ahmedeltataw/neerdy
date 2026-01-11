@@ -1,0 +1,21 @@
+extends ./Hero.pug
+include ./ui/_Button.pug
+block vars
+  - var customClass = "startGame" 
+block heroImage
+block heroTitle
+    h1.fs-res-60.fw-700.text-white  إنشاء لعبة
+block heroDescription
+    p.mb-6.fs-24.fw-400.text-white  لعبة جماعية تفاعلية نختبر فيها معرفتكم و ثقافتكم
+    p.fs-24.fw-400.text-white  لانشاء لعبة جديدة اضغط على ( لعبة جديدة )
+    p.mb-10.fs-24.fw-400.text-white  و لاسترجاع الألعاب السابقة، اضغط على ( ألعابي )
+block heroButtons
+    div(class='d-flex items-center justify-center gap-8')
+        +button({ 
+                    text: ' لعبة جديدة', 
+                    link: 'startGame.html', 
+                }).primary.large
+        +button({ 
+                    text: ' ألعابي ', 
+                    link: 'startGame.html', 
+                }).secondary.large

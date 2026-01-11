@@ -1,0 +1,13 @@
+include ./ui/_Button.pug
+include ./ui/_Icon.pug
+
+section.cate_game 
+    .container 
+        .content.text-center.mx-auto 
+            h2.fs-res-70.line-relaxed اختر الفئات
+            p.pb-8.fs-res-24.fw-400.text-dark.line-40 
+                | ٣ فئات لفريقك، و ٣ فئات للفريق المنافس، بمجموع ٦ فئات بـ ٣٦ سؤال مختلف، اختاروا الفئات بعناية عشان تضمنون الفرصة الأكبر للفوز
+            
+        .gameLayout 
+            include ./gameFilter
+            include ./gameLayout

@@ -1,0 +1,46 @@
+extends ./component/layout.pug
+include ./component/ui/_Input.pug
+include ./component/ui/_Button.pug
+//- extends ./component/Header.pug
+
+block title
+  | نيردي | تسجيل الدخول
+
+block content
+    section.auth.mx-auto
+
+        .container 
+            .form
+                .text-center.mx-auto.mb-8 
+                    h2.fs-res-36 تسجيل الدخول
+                form(action="") 
+                    +Input({
+                        type: 'email',
+                        id: 'userEmail',
+                        name: 'email',
+                        label: 'البريد الإلكتروني',
+                        placeholder: 'مثال: example@mail.com',
+                        required: true,
+                    })
+
+                    +Input({
+                        type: 'password',
+                        id: 'userPassword',
+                        name: 'EnterPassword',
+                        label: 'كلمة المرور',
+                        
+                        required: true,
+                        isPassword: true
+                    })
+                    
+                    div.d-flex.items-center.justify-center.flex-col.mt-12.pt-12
+                        +button({
+                            text:'تسجيل الدخول',
+                            type:'submit'
+                            }
+                        ).primary.changeColor.w-full
+                        +button({
+                            text:' إنشاء حساب جديد',
+                            link:'Register.html',
+                            }
+                        ).normalLink.mt-8.Heavy.fw-400

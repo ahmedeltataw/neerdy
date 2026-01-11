@@ -1,0 +1,53 @@
+extends ./component/layout.pug
+include ./component/ui/_Input.pug
+include ./component/ui/_Button.pug
+//- extends ./component/Header.pug
+
+block title
+  | نيردي |    اتصل بنا
+
+block content
+    section.auth.mx-auto
+
+        .container 
+            .form
+                .text-center.mx-auto.mb-8 
+                    h2.fs-res-36  اتصل بنا
+                form(action="") 
+                    +Input({
+                        type: 'text',
+                        id: 'userName',
+                        name: 'fullName',
+                        label: ' الإسم',
+                        placeholder: 'ادحل اسمك بالكامل',
+                        required: true,
+                    })
+                    +Input({
+                        type: 'email',
+                        id: 'userEmail',
+                        name: 'email',
+                        label: 'البريد الإلكتروني',
+                        placeholder: 'مثال: example@mail.com',
+                        required: true,
+                    })
+                    +Input({
+                        type: 'number',
+                        id: 'userPhone',
+                        name: 'EnterPhone',
+                        label: 'رقم الهاتف',
+                        placeholder: 'ادخل رقم الهاتف',
+                        required: true,
+                    })
+                    +Input({
+                        id: 'acceptTerms',
+                        name: 'acceptTerms',
+                        label: 'رسالتك',
+                        textarea:true
+                    })
+                    
+                    div.d-flex.items-center.justify-center.flex-col.mt-12
+                        +button({
+                            text:'ارسال ',
+                            type:'submit'
+                            }
+                        ).primary.changeColor.w-full

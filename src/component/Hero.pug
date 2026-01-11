@@ -1,18 +1,24 @@
 include ./ui/_Button.pug
 include ./ui/_Image.pug
-section.hero.pos-rel 
-    .container.h-full.d-flex.flex-col.items-center.justify-center.gap-8 
-        figure.w-190 
-                +Image({ 
-                    name: 'Logo_1', 
-                    alt: ' logo', 
-                    lazy: false,
-                    isHero:true,
-                }).heroLogo
+block vars
+  - var customClass = ""
+section.hero.pos-rel(class=customClass) 
+    .container(class=`md:gap-8 `).h-full.d-flex.flex-col.items-center.justify-center
+        block heroImage
+            figure.w-190 
+                    +Image({ 
+                        name: 'Logo_1', 
+                        alt: ' logo', 
+                        lazy: false,
+                        isHero:true,
+                    }).heroLogo
         .content.text-center
-            h1.mt-8.fs-24.fw-700.text-white  الجواب عليك، و السؤال علينا
-            p.mb-10.fs-24.fw-400.text-white ٦ فئات، ٣٦ سؤال، و معاهم ٣ وسائل مساعدة
-            +button({ 
-                        text: 'إنشاء لعبة', 
-                        link: '/', 
-                    }).primary.large
+            block heroTitle
+                h1.mt-8.fs-24.fw-700.text-white  الجواب عليك، و السؤال علينا
+            block heroDescription
+                p.mb-10.fs-24.fw-400.text-white ٦ فئات، ٣٦ سؤال، و معاهم ٣ وسائل مساعدة
+            block heroButtons
+                +button({ 
+                            text: 'إنشاء لعبة', 
+                            link: 'startGame.html', 
+                        }).primary.large
