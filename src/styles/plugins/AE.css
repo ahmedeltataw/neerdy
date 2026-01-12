@@ -109,11 +109,11 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 /* Accessibility */
 [aria-hidden="true"] {
-  display: none ;
+  display: none !important;
 }
 
 [role="button"] {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 /* Print Styles */

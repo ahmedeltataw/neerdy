@@ -1,0 +1,100 @@
+include ./ui/_Button.pug
+include ./ui/_Icon.pug
+include ./ui/_Input.pug
+
+.gameNameStart
+    form(action="scorePage.html" class='mx-auto')
+        .center
+            h2.fs-res-48.fw-700.mb-8 حدد معلومات الفرق
+            +Input({
+                type: 'text',
+                id: 'gameName',
+                name: 'gameName',
+                label: 'اسم اللعبة',
+                placeholder: 'مثال:لعبة التحدي',
+                required: true,
+            })
+        .d-grid(class='md:grid-col-2 grid-col-1 mt-14 gap-12') 
+            .center.fullWidth
+                h2.fs-res-24.fw-700.mb-8   الفريق الأول
+                +Input({
+                    type: 'text',
+                    id: 'firstTeam',
+                    name: 'firstTeam',
+                    label: ' الفريق الأول',
+                    placeholder: 'مثال:فريق الشباب',
+                    required: true,
+                })
+                h2.fs-res-24.fw-700.mt-12.mb-8   الفريق الأول : اختر 3 وسائل مساعدة
+                div(class="d-grid grid-col-2 sm:grid-col-2 lg:grid-col-4 gap-2")
+                    .cardHelp.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  اتصال بصديق
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_1" , className='iconHelp' , label="اتصال بصديق")
+                    .cardHelp.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  الحفرة
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_2" , className='iconHelp' , label="اتصال بصديق")
+
+                    .cardHelp.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  جاوب جوابين
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_3" , className='iconHelp' , label="اتصال بصديق")
+                    
+                    .cardHelp.notActive.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  استريح
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_4" , className='iconHelp' , label="اتصال بصديق")
+
+
+            .center.fullWidth
+                h2.fs-res-24.fw-700.mb-8  الفريق الثاني
+
+                +Input({
+                    type: 'text',
+                    id: 'secondTeam',
+                    name: 'secondTeam',
+                    label: ' الفريق الثاني',
+                    placeholder: 'مثال:فريق البنات',
+                    required: true,
+                })
+                h2.fs-res-24.fw-700.mt-12.mb-8   الفريق الثاني : اختر 3 وسائل مساعدة
+                div(class="d-grid grid-col-2 sm:grid-col-2 lg:grid-col-4 gap-4")
+                    .cardHelp.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  اتصال بصديق
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_1" , className='iconHelp' , label="اتصال بصديق")
+                    .cardHelp.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  الحفرة
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_2" , className='iconHelp' , label="اتصال بصديق")
+
+                    .cardHelp.notActive.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  جاوب جوابين
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_3" , className='iconHelp' , label="اتصال بصديق")
+                    
+                    .cardHelp.d-flex.items-center.justify-center.flex-col.gap-6.p-2.bg-input.round-lg  
+                        .contentHelp.text-center 
+                            h3.fs-14  استريح
+                            figure.w-full.h-20.mx-auto.my-4
+                                +Icon("help_4" , className='iconHelp' , label="اتصال بصديق")
+
+
+
+
+        div.d-flex.items-center.justify-center.flex-col.mt-12.pt-12
+            +button({
+                text:' ابدء اللعب',
+                type:'submit'
+                }
+            ).primary.changeColor.fs-res-36
+
+

@@ -1,0 +1,43 @@
+extends ./component/layout.pug
+include ./component/ui/_Input.pug
+include ./component/ui/_Button.pug
+//- extends ./component/Header.pug
+
+block title
+  | نيردي |   حسابي 
+
+block content
+    section.profile
+        .container 
+            .left-section
+                .header
+                    h1 حسابي
+                    .toggle-container
+                        +button({ text: 'حساب تعريفي', link: 'Profile.html', style: 'toggle-btn active' })
+                        +button({ text: 'تغيير كلمة المرور', link: 'ChangePassword.html', style: 'toggle-btn' })
+
+                form
+                    .form-row
+                        +Input({ id: 'firstName', name: 'firstName', label: 'الاسم الأول', value: 'wek' })
+                        +Input({ id: 'lastName', name: 'lastName', label: 'الاسم الأخير', value: 'Jon' })
+                    
+
+                    .form-group
+                        +Input({ type: 'email', id: 'email', name: 'email', label: 'البريد الإلكتروني', value: 'eltataweaa@gmail.com' })
+
+                    .form-group.date-input
+                        +Input({ id: 'dob', name: 'dob', label: 'تاريخ الميلاد', value: '31/12/2025' })
+                        span.calendar-icon 📅
+
+                    div.d-flex.items-center.justify-center.h-30.gap-8
+                        +button({
+                            text:'حفظ المتغيرات',
+                            type:'submit'
+                            }
+                        ).primary.changeColor.h-full(class='w-7/10')
+                        +button({ 
+                                text: 'تسجيل خروج', 
+                                style: 'primary', 
+                                icon: 'exit', 
+                                iconDir: 'left' 
+                            }).h-full(class='w-3/10')

@@ -1,5 +1,7 @@
 
 //- // Head الأساسي
+block ChangeClass
+  - var BodyClass = "ss"
 doctype html
 html(lang="ar")
    head
@@ -37,11 +39,15 @@ html(lang="ar")
       //- css style
       link(rel="stylesheet", href="./css/vendors.css")
       link(rel="stylesheet", href="./css/style.css")
-   body
-      include  ./Header.pug
+   body(class=BodyClass)
+      block Header
+         include  ./Header.pug
       main 
          block content
-      .overLay#overLay
-      include  ./Footer.pug
+      block overLay
+         .overLay#overLay
+      block Modals
+      block Footer
+         include  ./Footer.pug
       script(src="./js/vendors.js" type="module")
       script(src="./js/main.js" type="module")

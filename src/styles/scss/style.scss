@@ -1,19 +1,22 @@
+// @use "./helpers/bootstrap-custom";
 @use "../plugins/AE.css";
-
 // helpers
 @use "./helpers/colors" as *;
 @use "./helpers/fonts" as *;
 @use "./helpers/mixins" as *;
 @use "./helpers/animation" as *;
-// Component
-@use "./Component/hero";
-@use "./Component/faq";
-@use "./Component/auth";
-
 // ui
 @use "./Component/ui/button";
 @use "./Component/header";
 @use "./Component/footer";
+// Component
+@use "./Component/hero";
+@use "./Component/faq";
+@use "./Component/auth";
+@use "./Component/game";
+@use "./Component/profile";
+
+
 // customClass
 @use "./helpers/Class";
 
@@ -27,7 +30,7 @@ body {
   
 }
 
-section:not(.hero) {
+section:not(.hero ,.gameStarted) {
   padding-block: 50px;
   // min-height: 80dvh;
 }
@@ -96,8 +99,8 @@ a {
 
     .card {
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      transform: scale(.9);
       filter: brightness(1) contrast(1) grayscale(1);
+      transform: scale(.9);
 
     }
 
@@ -150,5 +153,98 @@ a {
 
 /*  */
 svg[aria-hidden="true"]{
-  display: inline-block;
+  display: inline-block !important;
+}
+// 
+.sectionAccordion {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  .accordionItem {
+    background: var(--inputBG);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    .accordionHeader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding-bottom: 10px;
+      
+      .sectionTitle {
+        background-color: var(--mainColor);
+        color: var(--white);
+        padding: 8px 40px;
+        border-radius: 25px;
+        font-size: 18px;
+        margin-top: -40px;
+      }
+
+      
+    }
+
+    .accordionBody {
+      overflow: hidden; 
+      height: 0; 
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) ; 
+      & > div{
+        opacity: 0;
+      }
+      
+    }
+
+    // كلاس الحالة المفتوحة (عشان Pug يبدأ بيه)
+    &.is-open {
+      .accordionBody {
+        height: auto; // سيتم استبداله برقم بواسطة الـ JS أثناء الحركة
+        & > div{
+        opacity: 1;
+      }
+      }
+    }
+  }
+}
+
+.bootstrap-wrapper {
+  @import "./helpers/bootstrap-custom";
+ 
+  &:has(.modal.show), 
+  &:has(.modal.collapsing) {
+    display: block !important;
+  }
+
+  .modal.show {
+    opacity: 1 !important;
+  }
+  .modal-dialog{
+    max-width: min(800px, 100%) !important;
+    
+  }
+   .modal-footer{
+    position: absolute;
+    top: 8px;
+    inset-inline-start: 10px;
+    button.btn_icon.info{
+      background-color: white;
+      width: 40px;
+      height: 40px;
+      svg{
+        color: var(--dark);
+        width: 24px;
+    height: 24px;
+      }
+      &:hover{
+        background-color: var(--dark);
+        svg{
+          color: var(--white);
+        }
+      }
+    }
+   }
+
 }

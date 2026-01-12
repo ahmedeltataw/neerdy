@@ -1,0 +1,21 @@
+extends ./gameFilter.pug
+
+block searchGroup
+    .searchGroup.h-30.pos-rel 
+        label(for="searchGame" ,class='d-flex items-center justify-center pos-abs l-0 center-pos_Y') 
+            +button({
+                
+                type:'submit',
+                icon:'search',
+                aria:'search button'
+            }
+            ).btn_icon(role='button')
+        input(type="text" ,placeholder='البحث باسم الفئة' ,id='searchGame' , name='searchGameName')
+block button
+    +button({ 
+                text: 'اشتر لعبة جديدة', 
+                link: 'startGame.html', 
+                icon:'cart_2',
+            }).greenButton.large
+
+block search_2

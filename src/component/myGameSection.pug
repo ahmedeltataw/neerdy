@@ -1,0 +1,46 @@
+//- include ./ui/_Button.pug
+section.myGame 
+    .container 
+        include ./myGameFilter.pug
+        .d-grid(class='grid-col-1 md:grid-col-2 lg:grid-col-4 gap-8 pt-14 mt-14')
+            .cardMyGame.round-lg.pos-rel.d-flex.items-center.justify-center.flex-col.gap-8
+                span.tags.fs-18.px-6.py-2.round-full.bg-green.text-white 
+                    | عدد مرات اللعب: 1
+                .cardHead.pb-8.d-flex.items-center.justify-center.flex-col.gap-8
+                    p.playName.fs-24.text-white.fw-700 التحدي الاسبوعي
+                    +button({ 
+                            text: ' العب ', 
+                        
+                        }).gameButton(role='button')
+                .cardLayout(class='d-grid grid-col-3 gap-1')
+                    .cardGame
+                        figure.pos-rel
+                            +Image({ name: '2', alt: 'إسلاميات' })
+                            figcaption.fs-14.fw-400.p-2.text-center.bg-main.text-white إسلاميات
+                            
+                    .cardGame
+                        figure.pos-rel
+                            +Image({ name: '2', alt: 'إسلاميات' })
+                            figcaption.fs-14.fw-400.p-2.text-center.bg-main.text-white إسلاميات
+                            
+                    .cardGame
+                        figure.pos-rel
+                            +Image({ name: '2', alt: 'إسلاميات' })
+                            figcaption.fs-14.fw-400.p-2.text-center.bg-main.text-white إسلاميات
+                            
+                    .cardGame
+                        figure.pos-rel
+                            +Image({ name: '2', alt: 'إسلاميات' })
+                            figcaption.fs-14.fw-400.p-2.text-center.bg-main.text-white.roundBottomStart إسلاميات
+                            
+                    .cardGame
+                        figure.pos-rel
+                            +Image({ name: '2', alt: 'إسلاميات' })
+                            figcaption.fs-14.fw-400.p-2.text-center.bg-main.text-white إسلاميات
+                            
+                    .cardGame
+                        figure.pos-rel
+                            +Image({ name: '2', alt: 'إسلاميات' })
+                            figcaption.fs-14.fw-400.p-2.text-center.bg-main.text-white.roundBottomEnd إسلاميات
+                            
+                    

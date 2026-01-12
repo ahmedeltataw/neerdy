@@ -1,0 +1,135 @@
+include ./ui/_Image.pug
+include ./ui/_Button.pug
+
+
+.sectionAccordion(class="mt-14 layout-view " , id='AccordionLayout',aria-hidden='false')
+
+  .accordionItem.mt-10.is-open
+    .accordionHeader
+        h3.sectionTitle الكويت
+        +button({ type:'button', icon:'minus'}).btn_icon.info.toggleBtn(type="button" aria-expanded="true")
+    .accordionBody.p-8
+      div.d-grid.gridLayoutGame(class='md:mt-12 mt-8' )
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '1', alt: 'مرور الكويت' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e مرور الكويت
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة ومعلومات عن مرور الكويت
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '1', alt: 'مرور الكويت' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e مرور الكويت
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة ومعلومات عن مرور الكويت
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+
+  .accordionItem.mt-10.is-open
+    .accordionHeader
+      h3.sectionTitle إسلاميات
+      +button({ type:'button', icon:'minus'}).btn_icon.info.toggleBtn(aria-expanded="true")
+
+    .accordionBody.p-8
+      div.d-grid.gridLayoutGame(class='md:mt-12 mt-8' )
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '2', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '7', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '3', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '2', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '7', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '3', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '2', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '7', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '3', alt: 'إسلاميات' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e إسلاميات
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span يحتوي على أسئلة دينية وتاريخ إسلامي والسيرة النبوية
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+
+
+  .accordionItem.mt-10.is-open
+    .accordionHeader
+      h3.sectionTitle نفط الكويت
+      +button({ type:'button', icon:'minus'}).btn_icon.info.toggleBtn(type="button" aria-expanded="true")
+
+    .accordionBody.p-8
+      div.d-grid.gridLayoutGame(class='md:mt-12 mt-8' )
+        .cardGame.round-lg
+          figure.pos-rel
+            +Image({ name: '1', alt: 'نفط الكويت' }).round-s
+            figcaption.fs-18.fw-400.p-4.text-center.bg-main.text-white.round-e نفط الكويت
+            +button({type:'button', icon:'info'}).btn_icon.info.tooltip
+            .tooltipContent
+              span معلومات تاريخية عن النفط في الكويت
+              +button({text:'أضف إلى المفضلة', type:'button', icon:'heart'}).btn_icon.verySmall
+

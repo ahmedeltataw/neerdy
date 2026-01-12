@@ -109,7 +109,9 @@ export const styles = () => {
         // يحمي أي selector فيه attributes زي [lang="ar"]
         deep: [
           /swiper/,
-          /\[lang="ar"\]/
+          /\[lang="ar"\]/,
+          /aria-hidden/, 
+          /role/
         ],
         // يحمي الـ selectors اللي بتبدأ بـ html أو body
         greedy: [
@@ -124,7 +126,7 @@ export const styles = () => {
 
   return gulp.src(paths.styles.src)
     .pipe(gulpIf(!isProd, sourcemaps.init()))
-    .pipe(sassCompiler().on("error", sassCompiler.logError))
+    .pipe(sassCompiler({loadPaths: ['node_modules', 'src/styles/scss']  ,quietDeps: true    }).on("error", sassCompiler.logError))
     .pipe(postcss(plugins))
     .pipe(gulpIf(!isProd, sourcemaps.write(".")))
     .pipe(size({ title: "CSS Size:" }))
@@ -253,8 +255,8 @@ export const serve = (done) => {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.images.src, optimizeImages);
-  gulp.watch(paths.icons.src, gulp.series(createSvgSprite, (done) => {
-    sync.reload(); 
+  gulp.watch("src/assets/icons/**/*.svg", gulp.series(createSvgSprite, (done) => {
+    sync.reload();
     done();
   }));
   done();

@@ -1,0 +1,28 @@
+include ./ui/_Image.pug
+include ./ui/_Icon.pug
+include ./ui/_Button.pug
+.bootstrap-wrapper.d-none
+  #staticBackdrop.modal.fade(
+    data-bs-backdrop="static" 
+    data-bs-keyboard="false" 
+    tabindex="-1" 
+    aria-labelledby="staticBackdropLabel" 
+  )
+    .modal-dialog.modal-dialog-centered
+      .modal-content
+        .modal-body
+          figure 
+            +Image({ 
+                    name: 'modelImage', 
+                    alt: ' modelImage', 
+                    lazy: false,
+                    isHero:false,
+                }).modelImage
+        .modal-footer
+          
+          +button({
+                    type:'button',
+                    icon:'close-2',
+                    aria:' closeModel '
+                }
+                ).btn_icon.info(role="button" data-bs-dismiss="modal")

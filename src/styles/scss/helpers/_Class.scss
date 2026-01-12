@@ -15,9 +15,15 @@
 .text-Body {
     color: var(--BodyBg);
 }
+.text-green {
+    color: #1b804e;
+}
 
 .bg-white {
     background-color: var(--white);
+}
+.bg-green {
+    background-color: #1b804e;
 }
 
 .bg-Body {
@@ -121,6 +127,11 @@
 
 .fs-res-36 {
     @include res('font-size', 18px, 30px);
+
+
+}
+.fs-res-48 {
+    @include res('font-size', 20px, 48px);
 
 
 }
@@ -346,12 +357,4 @@ label {
     opacity: 1;
 }
 
-.gridLayoutGame {
-    .cardGame { 
-        transition: var(--t-s);
-        &:hover,
-        &.active {
-            outline:  3px solid var(--secondColor);
-        }
-    }
-}
+

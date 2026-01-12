@@ -1,0 +1,33 @@
+include ./ui/_Button.pug
+include ./ui/_Image.pug
+include ./ui/_Icon.pug
+header.gameHeader.bg-white
+    .container-full 
+        nav.d-flex.items-center.justify-between.py-2
+            div(class='d-flex items-center md:gap-6 gap-0')
+                figure.logo(href='index.html' , aria-label='click logo to go homePage')
+                    +Image({ 
+                        name: 'Logo_1', 
+                        width: '100%',
+                        height: '100%',
+                        alt: ' logo', 
+                        lazy: false,
+                        
+                        })
+                span.tags.fw-700.round-full.bg-main.text-white(class='md:px-7 px-4 md:py-3 py-2') 
+                    | دور فريق : الشاب
+
+            p.nameGame.fw-700.text-dark
+                | التحدي الاسبوعي
+
+            menu.d-flex.items-center.gap-6(class='md:gap-2')
+                li 
+                    +button({ 
+                        text: 'انهاء اللعبة', 
+                        icon: 'gameEnd', 
+                    }).greenButton(role='button')
+                li 
+                    +button({ 
+                        text: ' خروج', 
+                        icon: 'exit', 
+                    }).secondary(role='button')

@@ -1,7 +1,7 @@
 include ./ui/_Image.pug
 include ./ui/_Button.pug
 
-div(class='d-grid gridLayoutGame mt-12')
+div(class='d-grid gridLayoutGame mt-12 layout-view' , aria-hidden='true' ,id='gridLayout')
     .cardGame.round-lg 
         figure.pos-rel
             +Image({ 
