@@ -1,0 +1,24 @@
+include ./ui/_Icon.pug
+include ./ui/_Image.pug
+include ./ui/_Button.pug
+
+section.panelGame
+    .ask.pos-rel
+        
+        .Question.d-flex.items-center.justify-center.flex-col.gap-14.py-8
+            h2.fs-res-36.fw-700   مسموح الوقوف 
+            figure 
+                +Image({ 
+                        name: 'ask', 
+                        alt: ' ask', 
+                        
+                        })
+
+        +button({ 
+                text: ' ارجع للسؤال', 
+                link: 'gamePanel.html', 
+            }).greenButton.back
+        +button({ 
+                text: ' اي قريق', 
+                link: 'answered-team.html', 
+            }).greenButton.blue

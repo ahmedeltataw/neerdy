@@ -1,0 +1,46 @@
+
+
+
+aside.gameFooter.asidePanel.mt-14
+    
+                div.d-flex.flex-col.gap-2.mb-6
+                    span.tags.fw-400.round-full.bg-main.text-white(class='md:px-7 px-4 md:py-3 py-2') 
+                        |    الشاب
+                    
+                    span.score.fw-700.text-main.text-center
+                        | 1200
+                    div
+                        p.fs-res-24.text-center.fw-700  وسائل مساعدة
+                        +button({
+                                    text:'الحفرة',
+                                    icon:'helpFooter_2',
+                                    style:'HelpButton largeHelp',
+                                    aria:'call friend',
+                                })
+                    
+                div.d-flex.flex-col.gap-2
+                    span.tags.fw-400.round-full.bg-main.text-white(class='md:px-7 px-4 md:py-3 py-2') 
+                        |  البنات
+                    
+                    span.score.fw-700.text-main.text-center
+                        | 1200
+                    p.fs-res-24.fw-700.text-center  وسائل مساعدة
+                    menu(class="d-flex items-center justify-center gap-4")
+                        li
+                            +button({
+                                icon:'helpFooter_1',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+                        li
+                            +button({
+                                icon:'helpFooter_2',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+                        li
+                            +button({
+                                icon:'helpFooter_3',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })

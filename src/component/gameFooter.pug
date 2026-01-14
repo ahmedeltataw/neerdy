@@ -1,0 +1,82 @@
+include ./ui/_Button.pug
+include ./ui/_Image.pug
+include ./ui/_Icon.pug
+footer.gameFooter.bg-white
+    .container-full.d-flex.items-center.justify-between 
+
+            div(class='d-flex justify-start items-center md:gap-8 gap-4 flex-wrap')
+                div.d-flex.flex-col.gap-4
+                    span.tags.fw-400.round-full.bg-main.text-white(class='md:px-7 px-4 md:py-3 py-2') 
+                        | دور فريق : الشاب
+                    .addScore.pos-rel
+                        +button({
+                                icon:'plus',
+                                style:'scoreAction more',
+                                aria:'call friend',
+                            })
+                        input(type="number" id='addScore' name='addScore' value='100' disable)
+                        +button({
+                            icon:'minus',
+                            style:'scoreAction mins',
+                            aria:'call friend',
+                        })
+                div.d-flex.flex-col.gap-4.items-center
+                    p.help.fs-res-24.fw-700  وسائل مساعدة
+                    menu(class="d-flex items-center gap-4")
+                        li
+                            +button({
+                                icon:'helpFooter_1',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+                        li
+                            +button({
+                                icon:'helpFooter_2',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+                        li
+                            +button({
+                                icon:'helpFooter_3',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+
+            div(class='d-flex justify-end items-center  md:gap-8 gap-4 flex-wrap')
+                div.d-flex.flex-col.gap-4
+                    span.tags.fw-400.round-full.bg-main.text-white(class='md:px-7 px-4 md:py-3 py-2') 
+                        | دور فريق : الشاب
+                    .addScore.pos-rel
+                        +button({
+                                icon:'plus',
+                                style:'scoreAction more',
+                                aria:'call friend',
+                            })
+                        input(type="number" id='addScore' name='addScore' value='100' disable)
+                        +button({
+                            icon:'minus',
+                            style:'scoreAction mins',
+                            aria:'call friend',
+                        })
+                div.d-flex.flex-col.gap-4.items-center
+                    p.help.fs-res-24.fw-700  وسائل مساعدة
+                    menu(class="d-flex items-center gap-4")
+                        li
+                            +button({
+                                icon:'helpFooter_1',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+                        li
+                            +button({
+                                icon:'helpFooter_2',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+                        li
+                            +button({
+                                icon:'helpFooter_3',
+                                style:'HelpButton',
+                                aria:'call friend',
+                            })
+

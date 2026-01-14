@@ -1,5 +1,5 @@
-
 @use "../helpers/mixins" as *;
+
 .cate_game {
     .layout-view {
         height: 100%;
@@ -111,51 +111,198 @@
 .myGame {
     .cardMyGame {
         background: linear-gradient(180deg, #0056a3 0%, #001f3f 100%);
-        .tags{
+
+        .tags {
             display: inline-block;
             margin-top: -25px;
         }
-        button.gameButton{
+
+        button.gameButton {
             box-shadow: none;
             border-radius: 16px;
             width: 80%;
-            @include res('font-size' , 16px, 24px);
+            @include res('font-size', 16px, 24px);
             font-weight: 700;
             border: none;
             background-color: var(--white);
             color: var(--mainColor);
-            &:hover{
+
+            &:hover {
                 background-color: var(--secondColor);
                 color: var(--dark);
             }
         }
-        .cardGame{
-            figcaption{
-                &.roundBottomStart{
+
+        .cardGame {
+            figcaption {
+                &.roundBottomStart {
                     border-bottom-right-radius: 1rem;
                 }
-                &.roundBottomEnd{
+
+                &.roundBottomEnd {
                     border-bottom-left-radius: 1rem;
                 }
             }
         }
     }
 }
-.gameStarted{
-    .cardGameStarted{
-        .askLink{
-            @include res('font-size' ,14px ,24px);
-            @include res('padding-inline' ,4px ,12px);
-            @include res('padding-block' ,2px ,8px);
-            font-weight: 700;
-            background-color: var(--grayLight);
-            color: var(--white);
-            text-align: center;
+
+.gameStarted {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .system {
+        grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+        height: 100%;
+        align-items: stretch;
+    }
+
+    .cardGameStarted {
+        height: 100%;
+        align-items: stretch;
+
+        @media(width >=768px) {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
         }
-        .cardGame{
-            figure{
-                height: 30%;
+
+        .teamButton {
+            height: 100%;
+            justify-content: space-between;
+
+            .askLink {
+                width: 100%;
+                @include res('font-size', 16px, 30px);
+                // @include res('padding-inline', 4px, 12px);
+                // @include res('padding-block', 2px, 8px);
+                font-weight: 700;
+                background-color: #d2d3d4;
+                color: var(--white);
+                text-align: center;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0;
+                border-left: 3px solid var(--BodyBg);
+                color: var(--mainColor);
+
+                &.disable {
+                    background-color: var(--inputBG);
+                    color: var(--inputHint);
+                    cursor: not-allowed !important;
+                }
+            }
+
+            &.threeTeam {
+                .askLink {
+                    // border-top-right-radius: 20px;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                }
             }
         }
+
+
+
+        .cardGame {
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+
+            figure {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                img {
+                    flex-grow: 1;
+                    object-fit: cover;
+                    width: 100%;
+                    border-top-right-radius: 20px;
+                }
+
+                figcaption {
+                    border-bottom-right-radius: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+.panelGame {
+    
+    
+    .ask {
+        border: 5px solid var(--mainColor);
+        border-radius: 30px;
+       @include res('padding-block', 35px, 60px);
+        padding-inline: 1.5rem;
+        // anchor-name: --ask;
+        .timer , .points{
+            background-color: var(--dark);
+            color: var(--white);
+            position: absolute;
+            top: -24px;
+            
+        }
+        .timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            @include res('padding-inline', 10px, 14px);
+            @include res('padding-block', 4px, 8px);
+            
+            width: min(300px, 80%);
+            border-radius: 999px;
+            left: 50%;
+            transform: translateX(-50%);
+            span {
+                display: inline-block;
+                @include res('font-size', 14px, 24px);
+
+                font-weight: 700;
+            }
+        }
+        .points{
+             @include res('font-size', 14px, 18px);
+             @include res('padding-inline', 10px, 14px);
+            @include res('padding-block', 4px, 8px);
+            border-radius: 12px;
+            width: fit-content;
+            inset-inline-start: 20px;
+            &.askType{
+                bottom: -20px;
+                top: auto;
+                background-color: var(--mainColor);
+            }
+        }
+        .greenButton{
+            border: none;
+            position: absolute;
+            bottom: -24px;
+            left: 20px;
+            box-shadow: none;
+            &.blue{
+                background-color: var(--mainColor);
+            }
+            &:hover{
+                transform: none;
+                box-shadow: none;
+            }
+            &.back{
+                bottom: -20px;
+                right: 20px;
+                left: auto;
+                // background-color: se;
+                background-color: var(--secondColor);
+                color: var(--dark);
+            }
+        }
+    }
+    @media(max-width:767px){
+        grid-row-start: 1;
     }
 }

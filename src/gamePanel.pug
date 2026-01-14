@@ -1,15 +1,16 @@
 extends ./component/layout.pug
 //- extends ./component/Header.pug
 block ChangeClass
-  - var BodyClass = "score-page"
+  - var BodyClass = "panel-page"
 block title
   | نيردي | بداية اللعب
 
 block Header
   include ./component/gameHeade.pug
 block content
-  include ./component/gameStarted.pug
+  include ./component/panelSide.pug
+  include ./component/panelGame.pug
 block overLay
 block Footer
-  include ./component/gameFooter.pug
+//-   include ./component/gameFooter.pug
 

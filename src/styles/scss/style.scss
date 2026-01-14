@@ -27,10 +27,10 @@
 body {
   font-family: "Cairo";
   background-color: var(--BodyBg);
-  
+
 }
 
-section:not(.hero ,.gameStarted) {
+section:not(.hero, .gameStarted) {
   padding-block: 50px;
   // min-height: 80dvh;
 }
@@ -76,10 +76,11 @@ a {
   stroke: currentColor; // في حال كانت الأيقونة تعتمد على الـ stroke
   vertical-align: middle;
 
-  &.iconHelp{
+  &.iconHelp {
     width: 100%;
     height: 100%;
-}
+  }
+
   // margin-right: 8px;
 }
 
@@ -108,15 +109,17 @@ a {
       .card {
         transform: scale(1.1);
         filter: brightness(1) contrast(1) grayscale(0);
-        @media(max-width:639px){
+
+        @media(max-width:639px) {
           transform: scale(1);
         }
 
       }
     }
-    @media(max-width:639px){
-          padding-block: 15px;
-        }
+
+    @media(max-width:639px) {
+      padding-block: 15px;
+    }
   }
 
   .swiper-button-next,
@@ -152,9 +155,10 @@ a {
 }
 
 /*  */
-svg[aria-hidden="true"]{
+svg[aria-hidden="true"] {
   display: inline-block !important;
 }
+
 // 
 .sectionAccordion {
   display: flex;
@@ -175,7 +179,7 @@ svg[aria-hidden="true"]{
       align-items: center;
       position: relative;
       padding-bottom: 10px;
-      
+
       .sectionTitle {
         background-color: var(--mainColor);
         color: var(--white);
@@ -185,26 +189,28 @@ svg[aria-hidden="true"]{
         margin-top: -40px;
       }
 
-      
+
     }
 
     .accordionBody {
-      overflow: hidden; 
-      height: 0; 
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) ; 
-      & > div{
+      overflow: hidden;
+      height: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &>div {
         opacity: 0;
       }
-      
+
     }
 
     // كلاس الحالة المفتوحة (عشان Pug يبدأ بيه)
     &.is-open {
       .accordionBody {
         height: auto; // سيتم استبداله برقم بواسطة الـ JS أثناء الحركة
-        & > div{
-        opacity: 1;
-      }
+
+        &>div {
+          opacity: 1;
+        }
       }
     }
   }
@@ -212,39 +218,94 @@ svg[aria-hidden="true"]{
 
 .bootstrap-wrapper {
   @import "./helpers/bootstrap-custom";
- 
-  &:has(.modal.show), 
+
+  &:has(.modal.show),
   &:has(.modal.collapsing) {
     display: block !important;
+  }
+
+  .modal {
+    cursor:
+      url("https://demo-morata.myshopify.com/cdn/shop/t/3/assets/cursor-close.png?v=93210088594709752341700037392"),
+      pointer;
+
+    .modal-content {
+      cursor: default;
+    }
   }
 
   .modal.show {
     opacity: 1 !important;
   }
-  .modal-dialog{
+
+  .modal-dialog {
     max-width: min(800px, 100%) !important;
-    
+
   }
-   .modal-footer{
+
+  .modal-footer {
     position: absolute;
     top: 8px;
     inset-inline-start: 10px;
-    button.btn_icon.info{
+
+    button.btn_icon.info {
       background-color: white;
       width: 40px;
       height: 40px;
-      svg{
+
+      svg {
         color: var(--dark);
         width: 24px;
-    height: 24px;
+        height: 24px;
       }
-      &:hover{
+
+      &:hover {
         background-color: var(--dark);
-        svg{
+
+        svg {
           color: var(--white);
         }
       }
     }
-   }
+  }
 
+}
+
+body:is(.panel-page, .score-page) {
+  height: 100svh;
+  overflow: hidden;
+
+
+  main {
+    flex-grow: 1;
+    padding-inline: 15px;
+  }
+}
+
+.score-page {
+  display: flex;
+  flex-direction: column;
+
+
+  main {
+    display: flex;
+    flex-direction: column;
+    
+
+    .container-full {
+      display: contents;
+    }
+  }
+}
+.panel-page{
+  main{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+    align-items: start;
+    @media(max-width:768px){
+      grid-template-columns: 1fr ;
+      // grid-template-rows: 1fr 120px;
+    }
+  }
 }

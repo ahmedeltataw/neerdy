@@ -3,7 +3,7 @@ include ./ui/_Image.pug
 include ./ui/_Icon.pug
 header.gameHeader.bg-white
     .container-full 
-        nav.d-flex.items-center.justify-between.py-2
+        nav.d-flex.items-center.justify-center.py-2.flex-wrap(class='sm:justify-between')
             div(class='d-flex items-center md:gap-6 gap-0')
                 figure.logo(href='index.html' , aria-label='click logo to go homePage')
                     +Image({ 

@@ -1,13 +1,143 @@
+@use "../helpers/mixins" as *;
 
-footer{
+footer:not(.gameFooter) {
     // height: 600px;
     padding-block-start: 50px;
     grid-template-rows: 1fr 80px;
     clip-path: ellipse(150% 100% at 50% 100%);
-    @media(max-width:540px){
+
+    @media(max-width:540px) {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         clip-path: none;
         grid-template-rows: 1fr 50px;
+    }
+}
+
+.gameFooter {
+    padding-block: 12px;
+
+    .tags {
+        @include res('font-size', 12px, 16px);
+        text-align: center
+    }
+
+    .help {
+        @include res('font-size', 12px, 20px);
+    }
+
+    .HelpButton {
+        border: 5px solid var(--grayLight);
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        display: grid;
+        place-content: center;
+
+        svg {
+            width: 20px;
+            aspect-ratio: 1/1;
+            color: var(--grayLight);
+        }
+
+        &:hover,
+        &.active {
+            background-color: var(--mainColor);
+            border-color: transparent;
+
+            svg {
+                color: var(--white);
+            }
+        }
+
+        &.largeHelp {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            @include res('font-size', 14px, 24px);
+            @include res('padding-inline', 12px, 16px);
+            @include res('padding-block', 6px, 8px);
+            background-color: var(--dark);
+            font-weight: 700;
+            color: var(--secondColor);
+
+            svg {
+                color: var(--secondColor);
+                width: 30px;
+                height: 30px;
+
+            }
+        }
+    }
+
+    menu {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
+    .addScore {
+        width: 100%;
+        border: 2px solid var(--grayLight);
+        border-radius: 999px;
+
+        input {
+            @include res('font-size', 16px, 18px);
+            font-weight: 700;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            border-color: transparent;
+            // cursor: not-allowed;
+        }
+
+        .scoreAction {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--mainColor);
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+
+            svg {
+                width: 16px;
+                height: 16px;
+                color: var(--white);
+            }
+
+            &.more {
+                inset-inline-start: 2px;
+
+            }
+
+            &.mins {
+                inset-inline-end: 2px;
+
+            }
+        }
+    }
+
+}
+
+.asidePanel {
+    .tags {
+        @include res('font-size', 14px, 20px);
+        @include res('padding-inline', 10px, 14px);
+        @include res('padding-block', 4px, 6px);
+    }
+
+    .score {
+        @include res('font-size', 14px, 28px);
+    }
+    @media(max-width:767px) {
+        // grid-row-end: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 }

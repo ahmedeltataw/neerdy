@@ -1,0 +1,26 @@
+include ./ui/_Icon.pug
+include ./ui/_Image.pug
+include ./ui/_Button.pug
+
+section.panelGame
+    .ask.pos-rel
+        .timer 
+            span.time.fs-24 5:00
+            +Icon('menu' )
+        p.points 
+            | 200 نقطة
+        .Question.d-flex.items-center.justify-center.flex-col.gap-14.py-8
+            h2.fs-res-36.fw-700 إلى ماذا يرمز الرصيف ذو اللونين الأبيض مع الأسود ؟
+            figure 
+                +Image({ 
+                        name: 'ask', 
+                        alt: ' ask', 
+                        
+                        })
+        p.points.askType
+            | مرور الكويت
+
+        +button({ 
+                text: ' الاجابة', 
+                link: 'answer-panel.html', 
+            }).greenButton
