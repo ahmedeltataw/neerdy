@@ -47,7 +47,7 @@ const paths = {
   images: { src: "src/assets/images/**/*.{jpg,jpeg,png,svg,gif}", dest: "dist/assets/images" },
   fonts: { src: "src/assets/fonts/**/*.{ttf,woff,woff2,eot}", dest: "dist/assets/fonts" },
   icons: { src: "src/assets/icons/**/*.svg", dest: "dist/assets/icons" },
-  static: { src: "src/assets/images/**/*.ico", dest: "dist/assets/images" },
+  static: { src: ["src/assets/images/**/*.ico" ,"src/assets/images/**/*.json"], dest: "dist/assets/images" },
 };
 
 // 1. تنظيف الملفات

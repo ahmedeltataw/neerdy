@@ -6,11 +6,41 @@ footer:not(.gameFooter) {
     grid-template-rows: 1fr 80px;
     clip-path: ellipse(150% 100% at 50% 100%);
 
-    @media(max-width:540px) {
+    @media(max-width:767px) {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         clip-path: none;
         grid-template-rows: 1fr 50px;
+    }
+    .copyrightDiv{
+        @media(max-width:767px){
+            padding-bottom: 12svh;
+        }
+    }
+    .mobileFooter {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 80px;
+        background-color: var(--white);
+        place-items: center;
+        gap: 20px;
+        padding-inline: 16px;
+        box-shadow: 0 -8px 1.25rem #6e6e6e4d;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 999;
+        a{
+            color: var(--gray);
+            font-weight: 700;
+            font-size: 16px;
+            svg{
+                color: var(--gary);
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+
     }
 }
 
@@ -133,6 +163,7 @@ footer:not(.gameFooter) {
     .score {
         @include res('font-size', 14px, 28px);
     }
+
     @media(max-width:767px) {
         // grid-row-end: 1;
         display: flex;

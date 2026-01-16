@@ -18,17 +18,17 @@ html(lang="ar")
       meta(name="author", content="safe nest")
 
       //- // Open Graph (لـ Facebook و LinkedIn وغيرهم)
-      //- meta(property="og:title", content="عنوان الصفحة على السوشيال")
-      //- meta(property="og:description", content="وصف يظهر عند مشاركة الصفحة")
-      //- meta(property="og:type", content="website")
-      //- meta(property="og:url", content="https://example.com")
-      //- meta(property="og:image", content="https://example.com/og-image.jpg")
+      meta(property="og:title", content="عنوان الصفحة على السوشيال")
+      meta(property="og:description", content="وصف يظهر عند مشاركة الصفحة")
+      meta(property="og:type", content="website")
+      meta(property="og:url", content="https://example.com")
+      meta(property="og:image", content="https://example.com/og-image.jpg")
 
       //- // Twitter Card
-      //- meta(name="twitter:card", content="summary_large_image")
-      //- meta(name="twitter:title", content="عنوان لتويتر")
-      //- meta(name="twitter:description", content="وصف لتويتر")
-      //- meta(name="twitter:image", content="https://example.com/twitter-image.jpg")
+      meta(name="twitter:card", content="summary_large_image")
+      meta(name="twitter:title", content="عنوان لتويتر")
+      meta(name="twitter:description", content="وصف لتويتر")
+      meta(name="twitter:image", content="https://example.com/twitter-image.jpg")
 
       //- // Favicons & Theme
       link(rel="icon", href="./assets/images/favicon.ico", type="image/x-icon")
@@ -37,6 +37,13 @@ html(lang="ar")
          link(rel="preload" href="./assets/fonts/ArbFONTS-Cairo-Regular-1.woff2" as="font" type="font/woff2" crossorigin)
          link(rel="preload" href="./assets/fonts/Cairo-Bold.woff2" as="font" type="font/woff2" crossorigin)
       //- css style
+      link(
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css"
+         integrity="sha512-kMPqFnKueEwgQFzXLEEl671aHhQqrZLS5IP3HzqdfozaST/EgU+/wkM07JCmXFAt9GO810I//8DBonsJUzGQsQ=="
+         crossorigin="anonymous"
+         referrerpolicy="no-referrer"
+         )
       link(rel="stylesheet", href="./css/vendors.css")
       link(rel="stylesheet", href="./css/style.css")
    body(class=BodyClass)
@@ -51,3 +58,9 @@ html(lang="ar")
          include  ./Footer.pug
       script(src="./js/vendors.js" type="module")
       script(src="./js/main.js" type="module")
+      script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+      integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      )

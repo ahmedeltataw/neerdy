@@ -129,3 +129,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// ==========
+
+const createOdometer = (el) => {
+  // جلب القيمة من attr data-num وتحويلها لرقم
+  const targetValue = parseInt(el.getAttribute('data-num')) || 0;
+
+  const odometer = new Odometer({
+    el: el,
+    value: 0,
+    format: '', // لضمان عدم ظهور فواصل آلاف تقلب الترتيب
+    theme: 'default'
+  });
+
+  let hasRun = false;
+
+  const options = {
+    threshold: [0, 0.5], // سيبدأ الأنييميشن عندما يظهر نصف العنصر
+  };
+
+  const callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !hasRun) {
+        odometer.update(targetValue);
+        hasRun = true;
+        observer.unobserve(el); // إيقاف المراقبة بعد التنفيذ لتحسين الأداء
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, options);
+  observer.observe(el);
+};
+
+// تشغيل العداد لكل العناصر التي تحمل كلاس odometer تلقائياً
+document.querySelectorAll('.odometer').forEach(el => {
+  createOdometer(el);
+});

@@ -24,10 +24,11 @@ header.gameHeader.bg-white
                 li 
                     +button({ 
                         text: 'انهاء اللعبة', 
+                        link:'EndGame.html',
                         icon: 'gameEnd', 
                     }).greenButton(role='button')
                 li 
                     +button({ 
                         text: ' خروج', 
                         icon: 'exit', 
-                    }).secondary(role='button')
+                    }).secondary(role='button' data-bs-toggle="modal" data-bs-target="#ExitGame")

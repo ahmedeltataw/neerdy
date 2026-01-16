@@ -1,0 +1,23 @@
+extends ./Modal_2.pug
+include ./ui/_Icon.pug
+include ./ui/_Button.pug
+block modalId 
+  - var modalId = "ExitGame"
+block titleId 
+  - var titleId = "ExitGameLabel"
+
+block modelHeader
+    .modal-header
+        h1(id=titleId).modal-title.fs-5 خروج
+        button.btnClose(type="button" data-bs-dismiss="modal" aria-label="Close")
+            +Icon('close')
+block modalBody
+    .modal-body
+        p هل تريد الخروج من اللعبة ؟
+block modalFooter
+        .modal-footer
+            button.btn.btn-secondary(type="button" data-bs-dismiss="modal" role='button') تكملة
+            +button({ 
+                        text: ' خروج', 
+                        link:'myGame.html'
+                    }).secondary.redBtn(role='button' )

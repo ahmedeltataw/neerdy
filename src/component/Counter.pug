@@ -1,21 +1,13 @@
+mixin statItem(targetNum, label, className, hasPlus = false)
+  .stat
+    //- نضع targetNum داخل data-num، ونبدأ المحتوى بـ 0
+    div(class=`${className}-odometer odometer ${hasPlus ? 'plus' : ''}` data-num=targetNum) 0
+    .type= label
 include ./ui/_Button.pug
 include ./ui/_Image.pug
 section.counter.pos-rel
     .container
-        div(class="d-grid grid-col-1 lg:grid-col-2 items-center gap-14 py-8")
-            figure
-                +Image({ 
-                        name: 'test', 
-                        
-                        alt: 'صورة المنتج', 
-                        
-
-                    }).round-full
-            .content.ms-8 
-                h2.tag.mainHeading.reverse كيف العب؟
-                p.mb-12.fs-20.fw-600.line-relaxed.text-Body 
-                    | جهز فريقك واختار مين بيلعب ضدك، واجتمعوا في مكان واحد. انت وفريقك اختاروا 3 فئات تناسبكم والفريق اللي ضدكم يختار 3 فئات بعد. اربط اللعبة على التلفزيون وابدأ اللعب.
-                +button({ 
-                            text: 'ابدء اللعب', 
-                            link: '/', 
-                        }).primary.large
+        .stats-container.d-grid(class='grid-col-1 sm:grid-col-2 lg:grid-col-3 gap-14 px-8')
+            +statItem('167672', 'عدد الاعبين', 'subscribers')
+            +statItem('900', 'عدد الاالعاب', 'videos')
+            +statItem('5857', 'عدد الاعبين الجدد', 'projects')

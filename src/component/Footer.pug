@@ -1,7 +1,7 @@
 include ./ui/_Image.pug
 include ./ui/_Icon.pug
 include ./ui/_Button.pug
-footer.bg-main.d-grid(class="gap-8 md:gap-14 ")
+footer.bg-main.pos-rel.d-grid(class="gap-8 md:gap-14 ")
     .container.h-full
         .d-grid(class='sm:grid-col-2 grid-col-1 gap-8 items-end ')
             .footerAbout 
@@ -45,6 +45,23 @@ footer.bg-main.d-grid(class="gap-8 md:gap-14 ")
                         icon:'youtube',
                         aria:'open instagram'
                     }).secondary.iconBtn(rel='noopener noreferrer' , target="_blank")
-    div.py-6.d-flex.items-center.justify-center
+    div.py-6.d-flex.items-center.justify-center.copyrightDiv
         p.copyRight.fs-20.text-white
             | © 2026 نيردي جميع الحقوق محفوظة.
+    ul.mobileFooter.d-grid(class='lg:d-none')
+        li
+            
+            a(href="index.html").d-flex.flex-col.items-center   
+                +Icon('menu' , className='mx-auto text-dark ' ," افتح القائمة  ")
+                |الرئيسية
+        li
+            
+            a(href="myGame.html").d-flex.flex-col.items-center   
+                +Icon('game' , className='mx-auto text-dark ' ," افتح القائمة  ")
+                | العابي
+        li
+            
+            a(href="Profile.html").d-flex.flex-col.items-center   
+                +Icon('setting' , className='mx-auto text-dark ' ," افتح القائمة  ")
+                | حسابي
+

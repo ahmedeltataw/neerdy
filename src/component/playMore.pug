@@ -1,0 +1,26 @@
+extends ./Modal_2.pug
+include ./ui/_Icon.pug
+include ./ui/_Button.pug
+block modalId 
+  - var modalId = "playAgain"
+block titleId 
+  - var titleId = "playAgainLabel"
+
+block modelHeader
+    .modal-header
+        h1(id=titleId).modal-title.fs-5 المتابعة من حيث توقفت
+        button.btnClose(type="button" data-bs-dismiss="modal" aria-label="Close")
+            +Icon('close')
+block modalBody
+    .modal-body
+        p لديك لعبة نشطة، هل تريد متابعة اللعب أو الاعادة ؟
+block modalFooter
+        .modal-footer
+            +button({ 
+                        text: ' الاستمرار', 
+                        link:'scorePage.html'
+                    }).secondary(role='button' )
+            +button({ 
+                        text: ' البدء من جديد', 
+                        link:'scorePage.html'
+                    }).secondary.redBtn(role='button' )

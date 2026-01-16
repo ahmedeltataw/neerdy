@@ -15,6 +15,7 @@
 @use "./Component/auth";
 @use "./Component/game";
 @use "./Component/profile";
+@use "./Component/counter";
 
 
 // customClass
@@ -243,32 +244,89 @@ svg[aria-hidden="true"] {
 
   }
 
-  .modal-footer {
-    position: absolute;
-    top: 8px;
-    inset-inline-start: 10px;
+  &:not(.normalModel) {
+    .modal-footer {
+      position: absolute;
+      top: 8px;
+      inset-inline-start: 10px;
 
-    button.btn_icon.info {
-      background-color: white;
-      width: 40px;
-      height: 40px;
-
-      svg {
-        color: var(--dark);
-        width: 24px;
-        height: 24px;
-      }
-
-      &:hover {
-        background-color: var(--dark);
+      button.btn_icon.info {
+        background-color: white;
+        width: 40px;
+        height: 40px;
 
         svg {
-          color: var(--white);
+          color: var(--dark);
+          width: 24px;
+          height: 24px;
+        }
+
+        &:hover {
+          background-color: var(--dark);
+
+          svg {
+            color: var(--white);
+          }
         }
       }
     }
   }
 
+  &.normalModel {
+
+    .modal {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      backdrop-filter: blur(2px);
+    }
+
+    
+
+    .modal-content {
+      background-color: var(--white);
+      max-width: min(800px, 100%) !important;
+      border-radius: 16px;
+      .modal-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        border-bottom: 1px solid var(--mainColor);
+        padding: 0 1rem;
+
+        h1 {
+          @include res('font-size', 16px, 28px);
+        }
+
+        .btnClose {
+          width: 60px;
+          height: 60px;
+          cursor: pointer;
+
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+
+      .modal-body {
+        p {
+          @include res('font-size', 16px, 24px);
+        }
+      }
+
+      .modal-footer {
+
+        button,
+        a {
+          flex-grow: 1;
+
+        }
+
+      }
+    }
+  }
 }
 
 body:is(.panel-page, .score-page) {
@@ -279,6 +337,7 @@ body:is(.panel-page, .score-page) {
   main {
     flex-grow: 1;
     padding-inline: 15px;
+
   }
 }
 
@@ -290,21 +349,24 @@ body:is(.panel-page, .score-page) {
   main {
     display: flex;
     flex-direction: column;
-    
+
 
     .container-full {
       display: contents;
     }
   }
 }
-.panel-page{
-  main{
+
+.panel-page {
+  main {
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 20px;
     align-items: start;
-    @media(max-width:768px){
-      grid-template-columns: 1fr ;
+    height: 100%;
+
+    @media(max-width:768px) {
+      grid-template-columns: 1fr;
       // grid-template-rows: 1fr 120px;
     }
   }

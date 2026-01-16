@@ -1,0 +1,22 @@
+
+
+block modalId 
+  - var modalId = "exitGame"
+block titleId 
+  - var titleId = "exitGame"
+.bootstrap-wrapper.normalModel
+    div(id=modalId , class='modal fade' tabindex="-1" aria-labelledby=titleId aria-hidden="true" data-bs-backdrop="true" 
+    data-bs-keyboard="true" )
+        .modal-dialog.modal-dialog-centered
+            .modal-content
+                block modelHeader
+                    .modal-header
+                        h1(id=titleId).modal-title.fs-5 Modal title
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                block modalBody
+                    .modal-body
+                        | ...
+                block modalFooter
+                    .modal-footer
+                        button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Close
+                        button.btn.btn-primary(type="button") Save changes

@@ -232,21 +232,24 @@
 
 
 .panelGame {
-    
-    
+
+
     .ask {
         border: 5px solid var(--mainColor);
         border-radius: 30px;
-       @include res('padding-block', 35px, 60px);
+        @include res('padding-block', 35px, 60px);
         padding-inline: 1.5rem;
+
         // anchor-name: --ask;
-        .timer , .points{
+        .timer,
+        .points {
             background-color: var(--dark);
             color: var(--white);
             position: absolute;
             top: -24px;
-            
+
         }
+
         .timer {
             display: flex;
             align-items: center;
@@ -254,11 +257,12 @@
             gap: 8px;
             @include res('padding-inline', 10px, 14px);
             @include res('padding-block', 4px, 8px);
-            
+
             width: min(300px, 80%);
             border-radius: 999px;
             left: 50%;
             transform: translateX(-50%);
+
             span {
                 display: inline-block;
                 @include res('font-size', 14px, 24px);
@@ -266,33 +270,39 @@
                 font-weight: 700;
             }
         }
-        .points{
-             @include res('font-size', 14px, 18px);
-             @include res('padding-inline', 10px, 14px);
+
+        .points {
+            @include res('font-size', 14px, 18px);
+            @include res('padding-inline', 10px, 14px);
             @include res('padding-block', 4px, 8px);
             border-radius: 12px;
             width: fit-content;
             inset-inline-start: 20px;
-            &.askType{
+
+            &.askType {
                 bottom: -20px;
                 top: auto;
                 background-color: var(--mainColor);
             }
         }
-        .greenButton{
+
+        .greenButton {
             border: none;
             position: absolute;
             bottom: -24px;
             left: 20px;
             box-shadow: none;
-            &.blue{
+
+            &.blue {
                 background-color: var(--mainColor);
             }
-            &:hover{
+
+            &:hover {
                 transform: none;
                 box-shadow: none;
             }
-            &.back{
+
+            &.back {
                 bottom: -20px;
                 right: 20px;
                 left: auto;
@@ -301,8 +311,119 @@
                 color: var(--dark);
             }
         }
+
+        figure {
+            img {
+                object-fit: contain;
+                height: 100%;
+                // width: unset;
+            }
+
+            @media(min-width:768px) {
+                height: 400px;
+            }
+        }
     }
-    @media(max-width:767px){
+
+    .window {
+        flex-grow: 1;
+    }
+
+    .selectTeam {
+        .team {
+            width: min(600px, 100%);
+            flex-grow: 1;
+
+            .primary {
+                width: 100%;
+                text-align: center;
+                @include res('font-size', 24px, 36px);
+            }
+
+        }
+
+        .primary,
+        .secondary {
+            text-align: center;
+            @include res('font-size', 24px, 36px);
+        }
+
+        .secondary {
+            width: min(600px, 100%);
+        }
+    }
+
+    @media(max-width:767px) {
         grid-row-start: 1;
+    }
+}
+
+.endGame {
+    flex-grow: 1;
+
+    .fire {
+        width: min(700px, 100%);
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .winTeam {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .teams {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            $color-green: #97b443;
+            $color-red: #c6302c;
+
+            .card {
+                width: 200px;
+                border-radius: 20px;
+                overflow: hidden;
+                font-family: sans-serif;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+                .card__header {
+                    background-color: var(--dark);
+                    color: var(--white);
+                    padding: 10px;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+
+                .card__body{
+                    padding: 25px 10px;
+                    color: var(--white);
+
+                    h2 {
+                        margin: 0;
+                        font-size: 2.5rem;
+                        letter-spacing: 1px;
+                    }
+                }
+
+                // الحالات الخاصة بالألوان
+                &.success {
+                    .card__body {
+                        background-color: $color-green;
+                    }
+                }
+
+                &.danger {
+                    .card__body {
+                        background-color: $color-red;
+                    }
+                }
+            }
+        }
     }
 }

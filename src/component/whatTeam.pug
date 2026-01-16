@@ -1,0 +1,34 @@
+include ./ui/_Icon.pug
+include ./ui/_Image.pug
+include ./ui/_Button.pug
+
+section.panelGame
+    .ask.selectTeam.pos-rel
+        
+        .Question.d-flex.items-center.justify-center.flex-col.gap-14.py-8
+            h2.fs-res-36.fw-700   مسموح الوقوف 
+            div.d-flex.items-center.gap-12.justify-center.flex-wrap.w-full.h-full.window
+                    div.d-flex.items-center.gap-12.team
+                            +button({ 
+                                text: '  الشباب', 
+                                link: 'scorePage.html', 
+                            }).primary
+                            +button({ 
+                                text: '  البنات', 
+                                link: 'scorePage.html', 
+                            }).primary
+                            +button({ 
+                                text: '  العائلة', 
+                                link: 'scorePage.html', 
+                            }).primary
+                    +button({ 
+                    text: '  ولا أحد', 
+                    link: 'scorePage.html', 
+                }).secondary
+
+        +button({ 
+                text: ' ارجع للاجابة', 
+                link: 'answer-panel.html', 
+            }).greenButton.back
+
+

@@ -1,0 +1,29 @@
+mixin scoreCard(title, value, type)
+  .card(class=`${type}`)
+    .card__header
+      span= title
+    .card__body
+      h2= value
+
+section.endGame.pos-rel
+    .container.h-full.pos-rel 
+        script(src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+        lottie-player(
+            src="./assets/images/fire.json"  
+            background="transparent"  
+            speed="1"  
+            class="fire"
+            loop  
+            autoplay
+        )
+        .winTeam 
+            .whatTeamWin 
+                p.fs-res-48.text-center مبروك الفوز   
+                h2.fs-res-96.fw-700.text-main.text-center فريق البنات
+            .teams.my-14 
+                +scoreCard('as', '1600', 'success')
+                +scoreCard('sa', '600', 'danger')
+            +button({ 
+                    text: 'العب مرة ثانية', 
+                    link: 'scorePage.html', 
+                }).primary

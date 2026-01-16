@@ -1,0 +1,117 @@
+extends ./component/layout.pug
+include ./component/ui/_Input.pug
+include ./component/ui/_Button.pug
+
+
+block title
+  | نيردي |   اشتري لعبة
+
+block content
+    section.package.mx-auto
+        .container 
+            .d-grid(class='grid-col-1 md:grid-col-2 lg:grid-col-3 gap-8')
+                .packageCard 
+                    .packageInfo.d-flex.items-center.gap-4.flex-col
+                        .packagesNames
+                        figure.img
+                            
+                        +Image({ 
+                        name: 'Package_1', 
+                        alt: ' Package_1', 
+                        })
+                        h3 باقة برونزية
+
+                    .packageFeature.mt-8
+                        ul
+                            li.d-flex.items-center.justify-between
+                                p.featureName عدد الالعاب
+                                p.featureResult 10
+                            li.d-flex.items-center.justify-between.my-8
+                                p.featureName عدد الفئات
+                                p.featureResult 10
+                            li.d-flex.items-center.justify-between
+                                p.featureName عدد الفرق
+                                p.featureResult 2
+
+                    .packagesBottom.d-flex.items-center.gap-8.justify-between
+                        +button({ 
+                            text: 'اشتري الان  ', 
+                            link: 'package.html', 
+                        }).greenButton
+                        .prices
+                            p.price.new 30
+                                span  ريال
+                                span /شهريا
+                            p.price.old 30
+                                span  ريال
+                                span /شهريا
+                .packageCard 
+                    .packageInfo.d-flex.items-center.gap-4.flex-col
+                        .packagesNames
+                        figure.img
+                            
+                        +Image({ 
+                        name: 'Package_2', 
+                        alt: ' Package_2', 
+                        })
+                        h3 باقة فضية
+
+                    .packageFeature.mt-8
+                        ul
+                            li.d-flex.items-center.justify-between
+                                p.featureName عدد الالعاب
+                                p.featureResult 10
+                            li.d-flex.items-center.justify-between.my-8
+                                p.featureName عدد الفئات
+                                p.featureResult 10
+                            li.d-flex.items-center.justify-between
+                                p.featureName عدد الفرق
+                                p.featureResult 2
+
+                    .packagesBottom.d-flex.items-center.gap-8.justify-between
+                        +button({ 
+                            text: 'اشتري الان  ', 
+                            link: 'package.html', 
+                        }).greenButton
+                        .prices
+                            p.price.new 30
+                                span  ريال
+                                span /شهريا
+                            p.price.old 30
+                                span  ريال
+                                span /شهريا
+                .packageCard 
+                    .packageInfo.d-flex.items-center.gap-4.flex-col
+                        .packagesNames
+                        figure.img
+                            
+                        +Image({ 
+                        name: 'Package_3', 
+                        alt: ' Package_3', 
+                        })
+                        h3 باقة ذهبية
+
+                    .packageFeature.mt-8
+                        ul
+                            li.d-flex.items-center.justify-between
+                                p.featureName عدد الالعاب
+                                p.featureResult 10
+                            li.d-flex.items-center.justify-between.my-8
+                                p.featureName عدد الفئات
+                                p.featureResult 10
+                            li.d-flex.items-center.justify-between
+                                p.featureName عدد الفرق
+                                p.featureResult 2
+
+                    .packagesBottom.d-flex.items-center.gap-8.justify-between
+                        +button({ 
+                            text: 'اشتري الان  ', 
+                            link: 'package.html', 
+                        }).greenButton
+                        .prices
+                            p.price.new 30
+                                span  ريال
+                                span /شهريا
+                            p.price.old 30
+                                span  ريال
+                                span /شهريا

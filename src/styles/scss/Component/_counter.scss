@@ -1,0 +1,35 @@
+.stat {
+  text-align: center;
+//   flex: 1;
+//   min-width: 150px;
+    background-color: var(--mainColor);
+    border-radius: 16px;
+    padding-block: 16px;
+  .odometer {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+    display: inline-block;
+    position: relative;
+    direction: ltr !important;
+    unicode-bidi: isolate; // يمنع التداخل مع اتجاه النصوص العربية المحيطة
+    // إضافة علامة الزائد (+) إذا وجد كلاس plus
+    &.plus::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--BodyBg);
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+  }
+
+  // تنسيق العنوان (Type)
+  .type {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    font-weight: 600;
+  }
+}
