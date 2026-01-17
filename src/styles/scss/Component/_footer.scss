@@ -46,7 +46,13 @@ footer:not(.gameFooter) {
 
 .gameFooter {
     padding-block: 12px;
-
+    .container-full{
+        @media(max-width:480px){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+    }
     .tags {
         @include res('font-size', 12px, 16px);
         text-align: center
